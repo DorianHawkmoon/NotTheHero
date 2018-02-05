@@ -5,6 +5,7 @@ public class Node  {
 
     public bool walkable;
     public Vector3 worldPosition;
+    public Node parent;
 
     public int gridX;
     public int gridY;
