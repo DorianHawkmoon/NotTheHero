@@ -1,17 +1,14 @@
 fileFormatVersion: 2
-guid: 11fccc3e51c1e44e3abe52121a293b52
-timeCreated: 1517861477
+guid: e3fdccce28e674d3ebf7aa0e9c0f7d61
+timeCreated: 1517941909
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: scene_props_0
-    21300002: scene_props_1
-    21300004: scene_props_2
-    21300006: scene_props_3
-    21300008: scene_props_4
-    21300010: scene_props_5
-    21300012: scene_props_6
-    21300014: scene_props_7
+    21300000: bola_nieve_0
+    21300002: bola_nieve_1
+    21300004: bola_nieve_2
+    21300006: bola_nieve_3
+    21300008: bola_nieve_4
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -128,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scene_props_0
+      name: bola_nieve_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 462
-        width: 36
-        height: 39
+        x: 0
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,13 +139,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: scene_props_1
+      name: bola_nieve_1
       rect:
         serializedVersion: 2
-        x: 74
-        y: 462
-        width: 36
-        height: 30
+        x: 96
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,13 +153,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: scene_props_2
+      name: bola_nieve_2
       rect:
         serializedVersion: 2
-        x: 182
-        y: 465
-        width: 33
-        height: 24
+        x: 0
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -170,13 +167,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: scene_props_3
+      name: bola_nieve_3
       rect:
         serializedVersion: 2
-        x: 239
-        y: 486
-        width: 6
-        height: 6
+        x: 96
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,55 +181,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: scene_props_4
+      name: bola_nieve_4
       rect:
         serializedVersion: 2
-        x: 242
-        y: 477
-        width: 18
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: scene_props_5
-      rect:
-        serializedVersion: 2
-        x: 131
-        y: 468
-        width: 27
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: scene_props_6
-      rect:
-        serializedVersion: 2
-        x: 257
-        y: 468
-        width: 12
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: scene_props_7
-      rect:
-        serializedVersion: 2
-        x: 298
-        y: 474
-        width: 15
-        height: 12
+        x: 0
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
