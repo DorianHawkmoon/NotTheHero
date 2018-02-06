@@ -2,6 +2,7 @@
 using UnityEngine;
 
 public class Grid  : MonoBehaviour {
+    public bool showGrid=false;
     public LayerMask unwalkableMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
@@ -11,12 +12,24 @@ public class Grid  : MonoBehaviour {
     private float nodeDiameter;
     private int gridSizeX, gridSizeY;
 
-    public void Start() {
+    public float NodeDiameter {
+        get {
+            return nodeDiameter;
+        }
+    }
+
+    public void Awake() {
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
 
         CreateGrid();
+    }
+
+    public int MaxSize {
+        get {
+            return gridSizeX * gridSizeY;
+        }
     }
 
     private void CreateGrid() {
@@ -69,20 +82,12 @@ public class Grid  : MonoBehaviour {
         return grid[x, y];
     }
 
-    public List<Node> path;
-
     public void OnDrawGizmos() {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 0.5f));
 
-        if (grid != null) {
+        if (grid != null && showGrid) {
             foreach (Node node in grid) {
                 Gizmos.color = (node.walkable) ? Color.white : Color.red;
-
-                if(path != null) {
-                    if (path.Contains(node)) {
-                        Gizmos.color = Color.yellow;
-                    }
-                }
                 Gizmos.DrawCube(node.worldPosition, Vector3.one * (nodeDiameter - 0.05f));
             }
         }
