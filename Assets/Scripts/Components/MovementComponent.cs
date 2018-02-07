@@ -5,19 +5,45 @@ using UnityEngine;
 public class MovementComponent : MonoBehaviour {
     public float velocity = 1;
 
+    private bool canMove = true;
+
     //private CharacterController controller;
     private PathFinderComponent pathFinder;
     private Vector3[] path;
     private int targetIndex;
 
     // Use this for initialization
-    void Start () {
+    public void Start () {
         //controller = GetComponent<CharacterController>();
         pathFinder = GetComponent<PathFinderComponent>();
         pathFinder.RegisterOnPathChange(OnChangedPath);
     }
+
+    public void StopMovement() {
+        SetCanMove(false);
+    }
+
+    public void MoveToTarget() {
+        SetCanMove(true);
+    }
+
+    public void CanMove() {
+        canMove = true;
+    }
+
+    private void SetCanMove(bool move) {
+        //it can't move and set to move, check the path and start!
+        if (move && !canMove) {
+            pathFinder.OnTargetChanged();//trigger a recalculation of path
+
+        } else if(!move && canMove) {
+            //stop moving, stop the routine
+            StopCoroutine("FollowPath");
+        }
+
+        canMove = move;
+    }
 	
-	// Update is called once per frame
 	private void OnChangedPath() {
         //get new path
         path = pathFinder.GetPath();
@@ -30,7 +56,7 @@ public class MovementComponent : MonoBehaviour {
     private IEnumerator FollowPath() {
         Vector3 currentWaypoint = path[0];
 
-        while (true) {
+        while (canMove) {
             if (transform.position == currentWaypoint) {
                 ++targetIndex;
                 if (targetIndex >= path.Length) {
