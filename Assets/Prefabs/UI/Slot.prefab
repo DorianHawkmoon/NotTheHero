@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 224822198248523254}
   - component: {fileID: 222429393690643390}
   - component: {fileID: 114178506613212544}
-  - component: {fileID: 114067298941939298}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -42,25 +41,12 @@ GameObject:
   - component: {fileID: 225910860493674984}
   - component: {fileID: 114766192681876536}
   m_Layer: 5
-  m_Name: ItemDrag
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114067298941939298
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1133372493426210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9afec838ebf2e164682c151f336056e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 0}
-  dragable: {fileID: 1942036732553698}
 --- !u!114 &114178506613212544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d004df05ca29634439dead745e7cf16e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 0}
 --- !u!222 &222237090894182916
 CanvasRenderer:
   m_ObjectHideFlags: 1
