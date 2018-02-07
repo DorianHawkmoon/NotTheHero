@@ -1,6 +1,9 @@
 ﻿using System;
 
-
+/// <summary>
+/// Interface to be implemented by classes to be stored in a heap
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public interface IHeapItem<T> : IComparable<T> {
     int HeapIndex {
         get;
@@ -27,13 +30,11 @@ public class Heap<T> where T : IHeapItem<T> {
 
     public T RemoveFirst() {
         T firstItem = items[0];
-        --currentItemCount;
-
+        currentItemCount--;
         items[0] = items[currentItemCount];
         items[0].HeapIndex = 0;
         SortDown(items[0]);
         return firstItem;
-
     }
 
     public void UpdateItem(T item) {
@@ -56,11 +57,11 @@ public class Heap<T> where T : IHeapItem<T> {
             int childIndexRight = item.HeapIndex * 2 + 2;
             int swapIndex = 0;
 
-            if(childIndexLeft < currentItemCount) {
+            if (childIndexLeft < currentItemCount) {
                 swapIndex = childIndexLeft;
 
-                if(childIndexRight < currentItemCount) {
-                    if(items[childIndexLeft].CompareTo(items[childIndexRight]) < 0) {
+                if (childIndexRight < currentItemCount) {
+                    if (items[childIndexLeft].CompareTo(items[childIndexRight]) < 0) {
                         swapIndex = childIndexRight;
                     }
                 }
@@ -70,24 +71,26 @@ public class Heap<T> where T : IHeapItem<T> {
                 } else {
                     return;
                 }
+
             } else {
                 return;
             }
+
         }
     }
 
     private void SortUp(T item) {
-        int parentIndex = (item.HeapIndex - 1 / 2);
+        int parentIndex = (item.HeapIndex - 1) / 2;
 
         while (true) {
             T parentItem = items[parentIndex];
-            if(item.CompareTo(parentItem) > 0) {
+            if (item.CompareTo(parentItem) > 0) {
                 Swap(item, parentItem);
             } else {
                 break;
             }
 
-            parentIndex = (item.HeapIndex - 1 / 2);
+            parentIndex = (item.HeapIndex - 1) / 2;
         }
     }
 
@@ -98,5 +101,4 @@ public class Heap<T> where T : IHeapItem<T> {
         itemA.HeapIndex = itemB.HeapIndex;
         itemB.HeapIndex = itemAIndex;
     }
-	
 }
