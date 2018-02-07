@@ -6,17 +6,25 @@ public class MovementComponent : MonoBehaviour {
     public float velocity = 1;
 
     private bool canMove = true;
-
-    //private CharacterController controller;
-    private PathFinderComponent pathFinder;
     private Vector3[] path;
     private int targetIndex;
+    private Vector3 moveDirection;
 
-    // Use this for initialization
-    public void Start () {
-        //controller = GetComponent<CharacterController>();
+    /// <summary>
+    /// Components needed
+    /// </summary>
+    private PathFinderComponent pathFinder;
+    private Animator animator;
+
+
+    public void Start() {
+        animator = GetComponent<Animator>();
         pathFinder = GetComponent<PathFinderComponent>();
         pathFinder.RegisterOnPathChange(OnChangedPath);
+    }
+
+    public void Update() {
+
     }
 
     public void StopMovement() {
@@ -36,15 +44,15 @@ public class MovementComponent : MonoBehaviour {
         if (move && !canMove) {
             pathFinder.OnTargetChanged();//trigger a recalculation of path
 
-        } else if(!move && canMove) {
+        } else if (!move && canMove) {
             //stop moving, stop the routine
             StopCoroutine("FollowPath");
         }
 
         canMove = move;
     }
-	
-	private void OnChangedPath() {
+
+    private void OnChangedPath() {
         //get new path
         path = pathFinder.GetPath();
         if (path != null && path.Length > 0) {
@@ -62,21 +70,39 @@ public class MovementComponent : MonoBehaviour {
                 if (targetIndex >= path.Length) {
                     targetIndex = 0;
                     path = new Vector3[0];
+                    moveDirection = Vector3.zero;
+                    Animations(Vector3.zero);
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
             }
             
-            /*currentWaypoint.z = 0;
-            Vector3 origin = transform.position;
-            origin.z = 0;
-            Vector3 move = currentWaypoint - origin;
-
-            controller.Move(move * Time.deltaTime * velocity);
-            Error: not working because of the comparison transform.position == currentWayPoint
-             */
+            Animations(currentWaypoint);
             transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, velocity * Time.deltaTime);
             yield return null;
+        }
+    }
+
+    private void Animations(Vector3 destiny) {
+        if (animator != null) {
+            Vector3 actualDirection = (destiny - transform.position).normalized;
+            Debug.Log(actualDirection);
+            if (actualDirection.x != moveDirection.x || actualDirection.y != moveDirection.y) {
+                moveDirection = actualDirection;
+                moveDirection.z = 0;
+
+                animator.SetFloat("DirectionX", moveDirection.x);
+                animator.SetFloat("DirectionY", moveDirection.y);
+
+                animator.SetBool("FaceUp", moveDirection.y > 0);
+                animator.SetBool("FaceDown", moveDirection.y < 0);
+
+                animator.SetBool("FaceRight", moveDirection.x > 0);
+                animator.SetBool("FaceLeft", moveDirection.x < 0);
+
+                animator.SetBool("Walking", moveDirection != Vector3.zero);
+            }
+            Debug.DrawLine(transform.position, transform.position + actualDirection * 1, Color.red, 0.5f);
         }
     }
 
@@ -84,7 +110,7 @@ public class MovementComponent : MonoBehaviour {
         if (path != null) {
             for (int i = targetIndex; i < path.Length; ++i) {
                 Gizmos.color = Color.yellow;
-                Gizmos.DrawCube(path[i], Vector3.one);
+                Gizmos.DrawCube(path[i], Vector3.one*0.2f);
 
                 if (i == targetIndex) {
                     Gizmos.DrawLine(transform.position, path[i]);
