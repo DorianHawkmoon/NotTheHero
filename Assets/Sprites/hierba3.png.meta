@@ -1,21 +1,17 @@
 fileFormatVersion: 2
-guid: acc3873d957f1431385815023d474f98
-timeCreated: 1517859893
+guid: 2f00d3af510d1451dba57a9279cb4c4e
+timeCreated: 1518028420
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: hierba_0
-    21300002: hierba_1
-    21300004: hierba_2
-    21300006: hierba_3
-    21300008: hierba_4
-    21300010: hierba_5
-    21300012: hierba_6
-    21300014: hierba_7
-    21300016: hierba_8
-    21300018: hierba_9
-    21300020: hierba_10
-    21300022: hierba_11
+    21300000: hierba3_0
+    21300002: hierba3_1
+    21300004: hierba3_2
+    21300006: hierba3_3
+    21300008: hierba3_4
+    21300010: hierba3_5
+    21300012: hierba3_6
+    21300014: hierba3_7
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -132,49 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hierba_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 576
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hierba_1
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 576
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hierba_2
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 576
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hierba_3
+      name: hierba3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -188,7 +142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hierba_4
+      name: hierba3_1
       rect:
         serializedVersion: 2
         x: 192
@@ -202,7 +156,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hierba_5
+      name: hierba3_2
       rect:
         serializedVersion: 2
         x: 384
@@ -216,7 +170,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hierba_6
+      name: hierba3_3
       rect:
         serializedVersion: 2
         x: 0
@@ -230,7 +184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hierba_7
+      name: hierba3_4
       rect:
         serializedVersion: 2
         x: 192
@@ -244,7 +198,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hierba_8
+      name: hierba3_5
       rect:
         serializedVersion: 2
         x: 384
@@ -258,7 +212,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hierba_9
+      name: hierba3_6
       rect:
         serializedVersion: 2
         x: 0
@@ -272,24 +226,10 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: hierba_10
+      name: hierba3_7
       rect:
         serializedVersion: 2
         x: 192
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: hierba_11
-      rect:
-        serializedVersion: 2
-        x: 384
         y: 0
         width: 192
         height: 192
