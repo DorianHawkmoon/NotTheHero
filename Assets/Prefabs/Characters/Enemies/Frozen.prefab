@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 114924214397593632}
   - component: {fileID: 114050295896305428}
   - component: {fileID: 114001304014602864}
+  - component: {fileID: 114634518749759788}
   m_Layer: 0
   m_Name: Frozen
   m_TagString: Untagged
@@ -159,6 +160,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 1
+--- !u!114 &114634518749759788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1373157347986412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57aec2a2c2c7924786b94f6a391ee6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabProjectile: {fileID: 0}
+  offsetLauncher: {x: 0, y: 0, z: 0}
 --- !u!114 &114924214397593632
 MonoBehaviour:
   m_ObjectHideFlags: 1

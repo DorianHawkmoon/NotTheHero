@@ -85,7 +85,7 @@ public class MovementComponent : MonoBehaviour {
     private void Animations(Vector3 destiny) {
         if (animator != null) {
             Vector3 actualDirection = (destiny - transform.position).normalized;
-            Debug.Log(actualDirection);
+
             if (actualDirection.x != moveDirection.x || actualDirection.y != moveDirection.y) {
                 moveDirection = actualDirection;
                 moveDirection.z = 0;
@@ -101,12 +101,11 @@ public class MovementComponent : MonoBehaviour {
 
                 animator.SetBool("Walking", moveDirection != Vector3.zero);
             }
-            Debug.DrawLine(transform.position, transform.position + actualDirection * 1, Color.red, 0.5f);
         }
     }
 
     public void OnDrawGizmos() {
-        if (path != null) {
+        /*if (path != null) {
             for (int i = targetIndex; i < path.Length; ++i) {
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawCube(path[i], Vector3.one*0.2f);
@@ -117,6 +116,6 @@ public class MovementComponent : MonoBehaviour {
                     Gizmos.DrawLine(path[i - 1], path[i]);
                 }
             }
-        }
+        }*/
     }
 }
