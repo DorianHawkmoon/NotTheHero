@@ -36,12 +36,14 @@ public class SearchKillDistance : MonoBehaviour {
     /// </summary>
     private TargetComponent targetComponent;
     private MovementComponent moveComponent;
+    private LauncherProyectileComponent launcherComponent;
     
     
     public void Start () {
         targetSelected = null;
         targetComponent = GetComponent<TargetComponent>();
         moveComponent = GetComponent<MovementComponent>();
+        launcherComponent = GetComponent<LauncherProyectileComponent>();
     }
 
     /// <summary>
@@ -116,6 +118,7 @@ public class SearchKillDistance : MonoBehaviour {
         if(dSqrToTarget <= distanceToShoot*distanceToShoot) {
             moveComponent.StopMovement();
             Debug.Log("Shoot it!!");
+            launcherComponent.Launch(directionToTarget);
             result = true;
             //start cadence count
             inCadence = true;
