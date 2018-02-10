@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4376886471036552}
   - component: {fileID: 212351576461422864}
   - component: {fileID: 95400721995446562}
+  - component: {fileID: 135727969874671372}
+  - component: {fileID: 114699103966217818}
   m_Layer: 0
   m_Name: MineField
   m_TagString: Untagged
@@ -58,6 +60,35 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114699103966217818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1978908511197388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c33693907577fc4b9b2a59836cae3de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToActivate: 0.5
+  radiusExplosion: 0.5
+  damage: 10
+  explosionPrefab: {fileID: 1533282478315654, guid: c200ccfe4eaaf7c44b168d7826b6526b,
+    type: 2}
+  scaleExplosion: 1
+--- !u!135 &135727969874671372
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1978908511197388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.27921966
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212351576461422864
 SpriteRenderer:
   m_ObjectHideFlags: 1
