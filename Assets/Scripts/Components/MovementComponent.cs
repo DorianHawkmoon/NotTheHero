@@ -56,8 +56,15 @@ public class MovementComponent : MonoBehaviour {
         path = pathFinder.GetPath();
         if (path != null && path.Length > 0) {
             StopCoroutine("FollowPath");
+            CleanPath();
             StartCoroutine("FollowPath");
         }
+    }
+
+    private void CleanPath() {
+        targetIndex = 0;
+        moveDirection = Vector3.zero;
+        Animations(Vector3.zero);
     }
 
     private IEnumerator FollowPath() {
@@ -67,10 +74,8 @@ public class MovementComponent : MonoBehaviour {
             if (transform.position == currentWaypoint) {
                 ++targetIndex;
                 if (targetIndex >= path.Length) {
-                    targetIndex = 0;
                     path = new Vector3[0];
-                    moveDirection = Vector3.zero;
-                    Animations(Vector3.zero);
+                    CleanPath();
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
@@ -105,7 +110,7 @@ public class MovementComponent : MonoBehaviour {
     }
 
     public void OnDrawGizmos() {
-        /*if (path != null) {
+        if (path != null) {
             for (int i = targetIndex; i < path.Length; ++i) {
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawCube(path[i], Vector3.one*0.2f);
@@ -116,6 +121,6 @@ public class MovementComponent : MonoBehaviour {
                     Gizmos.DrawLine(path[i - 1], path[i]);
                 }
             }
-        }*/
+        }
     }
 }

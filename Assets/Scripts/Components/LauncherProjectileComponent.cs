@@ -12,16 +12,14 @@ public class LauncherProjectileComponent : MonoBehaviour {
     [SerializeField]
     private Vector3 offsetLauncher = Vector3.zero;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField]
+    private bool useCustomVelocity = false;
 
+
+    [SerializeField]
+    private float customVelocityProjectile=0;
+
+    
     public void Launch(Vector3 direction) {
         if (prefabProjectile == null) return;
 
@@ -30,7 +28,11 @@ public class LauncherProjectileComponent : MonoBehaviour {
         //it will have the velocity and a KillOnCollisionComponent (under folder collisionsComponents)
         GameObject projectile = Instantiate(prefabProjectile);
         projectile.transform.position = transform.position + offsetLauncher;
-        projectile.GetComponent<ProjectileComponent>().Direction = direction;
+        ProjectileComponent projectileCmp= projectile.GetComponent<ProjectileComponent>();
+        projectileCmp.Direction = direction;
+        if (useCustomVelocity) {
+            projectileCmp.SetVelocity(customVelocityProjectile);
+        }
         //get proyectile component and set direction
         GameControllerTemporal.AddTemporal(projectile);
     }

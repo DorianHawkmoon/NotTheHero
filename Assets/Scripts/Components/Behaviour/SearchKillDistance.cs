@@ -28,8 +28,8 @@ public class SearchKillDistance : MonoBehaviour {
     /// <summary>
     /// Target is going through
     /// </summary>
-    private GameObject targetSelected;
-
+    private GameObject targetSelected; //TODO improve this by getting a targetable component which specify the exact point
+    //to shoot and look for
 
     /// <summary>
     /// Needed component to set the target and move
@@ -90,7 +90,7 @@ public class SearchKillDistance : MonoBehaviour {
     }
 
     private void CheckTarget() {
-        //TODO measure performance (quadtree of heroes?)
+        //TODO measure performance (quadtree of heroes?) or quadtree of lifecomponent and filter by tag
         GameObject[] targetsFounds = GameObject.FindGameObjectsWithTag(tagTarget);
         GameObject target = GetClosestEnemy(targetsFounds);
 
@@ -99,6 +99,7 @@ public class SearchKillDistance : MonoBehaviour {
         if (targetSelected == null || targetSelected != target) {
             targetSelected = target;
             targetComponent.SetTargetObject(targetSelected);
+            targetSelected.GetComponent<LifeComponent>().RegisterOnDeath(OnTargetDeath);
         }
     }
 
@@ -109,7 +110,7 @@ public class SearchKillDistance : MonoBehaviour {
     private bool CheckDistanceShoot() {
         bool result = false;
 
-        if (targetSelected == null)  return result; 
+        if (targetSelected == null)  return result;
 
         Transform potentialTarget = targetSelected.transform;
         Vector3 directionToTarget = potentialTarget.position - transform.position;
@@ -138,6 +139,10 @@ public class SearchKillDistance : MonoBehaviour {
         Vector3 currentPosition = transform.position;
         foreach (GameObject potential in enemies) {
             Transform potentialTarget = potential.transform;
+            LifeComponent life = potential.GetComponent<LifeComponent>(); //TODO urgent improve!!
+            if (life == null || life.IsDead()) {
+                continue;
+            }
             Vector3 directionToTarget = potentialTarget.position - currentPosition;
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr) {
@@ -147,5 +152,11 @@ public class SearchKillDistance : MonoBehaviour {
         }
 
         return target;
+    }
+
+
+    private void OnTargetDeath() {
+        targetSelected.GetComponent<LifeComponent>().UnregisterOnDeath(OnTargetDeath);
+        targetSelected = null;
     }
 }

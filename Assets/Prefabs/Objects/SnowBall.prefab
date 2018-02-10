@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 212621968904575048}
   - component: {fileID: 135035520525802472}
   - component: {fileID: 114771372302164086}
+  - component: {fileID: 143368590194185444}
   m_Layer: 0
   m_Name: SnowBall
   m_TagString: Untagged
@@ -72,7 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  velocity: 1
+  velocity: 0.2
 --- !u!135 &135035520525802472
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -83,8 +84,25 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.10781897
-  m_Center: {x: 0.000000067055225, y: 0.010533452, z: 0}
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &143368590194185444
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1360845626205958}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Height: 0.18
+  m_Radius: 0.18
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212621968904575048
 SpriteRenderer:
   m_ObjectHideFlags: 1

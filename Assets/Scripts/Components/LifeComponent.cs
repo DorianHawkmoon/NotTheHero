@@ -16,10 +16,14 @@ public class LifeComponent : MonoBehaviour {
     public void Damage(int damage) {
         life -= damage;
 
-        onLifeChange(life);
-        if(life<0 && !died) {
+        if (onLifeChange != null) {
+            onLifeChange(life);
+        }
+        if(life<=0 && !died) {
             died = true;
-            onDeath();
+            if (onDeath != null) {
+                onDeath();
+            }
         }
     }
     
