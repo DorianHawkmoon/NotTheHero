@@ -8,17 +8,17 @@ public class Bomb : MonoBehaviour {
     [SerializeField]
     private float time;
     [SerializeField]
-    private float radiusExplosion=1;
+    private float radiusExplosion = 1;
     /// <summary>
     /// 
     /// </summary>
     [SerializeField]
-    private int damage=1;
+    private int damage = 1;
     /// <summary>
     /// 
     /// </summary>
     [SerializeField]
-    private GameObject explosionPrefab=null;
+    private GameObject explosionPrefab = null;
     /// <summary>
     /// 
     /// </summary>
@@ -29,6 +29,16 @@ public class Bomb : MonoBehaviour {
 
     public void Start() {
         timer = time;
+
+        Animator anim = GetComponent<Animator>();
+        if (anim != null) {
+            Debug.Log("got an animator");
+            AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
+            if (clips.Length > 0) {
+                float speed = 1.0f / (time / clips[0].length);
+                anim.SetFloat("Speed", speed);
+            }
+        }
     }
 
     public void Update() {
