@@ -24,11 +24,9 @@ public class LauncherProjectileComponent : MonoBehaviour {
         if (prefabProjectile == null) return;
 
         //create the proyectile
-        //give it the direction
-        //it will have the velocity and a KillOnCollisionComponent (under folder collisionsComponents)
         GameObject projectile = Instantiate(prefabProjectile);
         projectile.transform.position = transform.position + offsetLauncher;
-        ProjectileComponent projectileCmp= projectile.GetComponent<ProjectileComponent>();
+        ProjectileComponent projectileCmp= projectile.GetComponentInChildren<ProjectileComponent>();
         projectileCmp.Direction = direction;
         if (useCustomVelocity) {
             projectileCmp.SetVelocity(customVelocityProjectile);

@@ -11,11 +11,15 @@ public class LookingComponent : MonoBehaviour {
 
     public void Start() {
         animator = GetComponent<Animator>();
-        target = GetComponent<TargetComponent>();        target.RegisterOnTargetChange(OnTargetChanged);
+        target = GetComponent<TargetComponent>();
+        target.RegisterOnTargetChange(OnTargetChanged);
         target.RegisterOnTargetMove(OnTargetChanged);
     }
 
-    private void OnTargetChanged() {        Vector3 destiny = target.GetLastTargetPosition();        Animations(destiny);    }
+    private void OnTargetChanged() {
+        Vector3 destiny = target.GetLastTargetPosition();
+        Animations(destiny);
+    }
 
     private void Animations(Vector3 destiny) {
         if (animator != null) {
@@ -32,9 +36,9 @@ public class LookingComponent : MonoBehaviour {
     }
 
     public void OnDrawGizmos() {
-        if (moveDirection != Vector3.zero) {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, moveDirection);
-        }
+        //if (moveDirection != Vector3.zero) {
+        //    Gizmos.color = Color.blue;
+        //    Gizmos.DrawLine(transform.position, transform.position+moveDirection);
+        //}
     }
 }

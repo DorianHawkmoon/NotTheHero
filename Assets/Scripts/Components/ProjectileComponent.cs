@@ -5,7 +5,7 @@ public class ProjectileComponent : MonoBehaviour {
     /// Quantity of damage it could do
     /// </summary>
     [SerializeField]
-    private int damage=0;
+    private int damage = 0;
     /// <summary>
     /// Velocity of the projectile
     /// </summary>
@@ -16,10 +16,12 @@ public class ProjectileComponent : MonoBehaviour {
     /// </summary>
     private Vector3 direction;
 
+    private Transform parent;
+
     /// <summary>
     /// has collide?
     /// </summary>
-    private bool onCollision=false;
+    private bool onCollision = false;
 
     /// <summary>
     /// animator of projectile
@@ -28,7 +30,14 @@ public class ProjectileComponent : MonoBehaviour {
 
     public Vector3 Direction {
         get { return direction; }
-        set { direction = value; }
+        set {
+            direction = value;
+            Vector3 destiny = transform.position + direction;
+            float AngleRad = Mathf.Atan2(destiny.y - transform.position.y, destiny.x - transform.position.x);
+            float angle = (180 / Mathf.PI) * AngleRad;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        }
     }
 
     public void SetVelocity(float velocity) {
@@ -37,11 +46,12 @@ public class ProjectileComponent : MonoBehaviour {
 
     public void Start() {
         animations = GetComponent<Animator>();
+        parent = transform.parent;
     }
 
     public void Update() {
         if (!onCollision) {
-            transform.Translate(direction * velocity * Time.deltaTime);
+            parent.transform.Translate(direction * velocity * Time.deltaTime);
         }
     }
 
@@ -52,9 +62,14 @@ public class ProjectileComponent : MonoBehaviour {
     /// <param name="other"></param>
     virtual public void OnTriggerEnter(Collider other) {
         if (other.tag == "Hero") { //TODO improve tag to use
-            animations.SetTrigger("Explosion");
+            if (animations != null) {
+                animations.SetTrigger("Explosion");
+            } else {
+                //destroy the object
+                Destroy(gameObject);
+            }
             onCollision = true;
-            //get object and do damage
+            //get object and do damage TODO this is done by another component =>  KillOnCollisionComponent (under folder collisionsComponents)
             LifeComponent life = other.gameObject.GetComponent<LifeComponent>();
             if (life != null) {
                 life.Damage(damage);
