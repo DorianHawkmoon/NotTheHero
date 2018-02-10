@@ -52,7 +52,6 @@ public class ProjectileComponent : MonoBehaviour {
     /// <param name="other"></param>
     virtual public void OnTriggerEnter(Collider other) {
         if (other.tag == "Hero") { //TODO improve tag to use
-            Debug.Log("Explosion");
             animations.SetTrigger("Explosion");
             onCollision = true;
             //get object and do damage

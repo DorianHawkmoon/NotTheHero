@@ -8,6 +8,7 @@ public class MovementComponent : MonoBehaviour {
     private Vector3[] path;
     private int targetIndex;
     private Vector3 moveDirection;
+    private bool moving;
 
     /// <summary>
     /// Components needed
@@ -20,10 +21,6 @@ public class MovementComponent : MonoBehaviour {
         animator = GetComponent<Animator>();
         pathFinder = GetComponent<PathFinderComponent>();
         pathFinder.RegisterOnPathChange(OnChangedPath);
-    }
-
-    public void Update() {
-
     }
 
     public void StopMovement() {
@@ -58,18 +55,22 @@ public class MovementComponent : MonoBehaviour {
             StopCoroutine("FollowPath");
             CleanPath();
             StartCoroutine("FollowPath");
+        }else if (path == null) {
+            StopCoroutine("FollowPath");
+            CleanPath();
         }
     }
 
     private void CleanPath() {
         targetIndex = 0;
-        moveDirection = Vector3.zero;
+        //moveDirection = Vector3.zero;
+        moving = false;
         Animations(Vector3.zero);
     }
 
     private IEnumerator FollowPath() {
         Vector3 currentWaypoint = path[0];
-
+        moving = true;
         while (canMove) {
             if (transform.position == currentWaypoint) {
                 ++targetIndex;
@@ -98,13 +99,7 @@ public class MovementComponent : MonoBehaviour {
                 animator.SetFloat("DirectionX", moveDirection.x);
                 animator.SetFloat("DirectionY", moveDirection.y);
 
-                animator.SetBool("FaceUp", moveDirection.y > 0);
-                animator.SetBool("FaceDown", moveDirection.y < 0);
-
-                animator.SetBool("FaceRight", moveDirection.x > 0);
-                animator.SetBool("FaceLeft", moveDirection.x < 0);
-
-                animator.SetBool("Walking", moveDirection != Vector3.zero);
+                animator.SetBool("Walking", moving);
             }
         }
     }

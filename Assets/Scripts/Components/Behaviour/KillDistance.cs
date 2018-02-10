@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SearchKillDistance : MonoBehaviour {
+public class KillDistance : MonoBehaviour {
     /// <summary>
     /// At what distance it start shooting
     /// </summary>
@@ -32,18 +32,18 @@ public class SearchKillDistance : MonoBehaviour {
     //to shoot and look for
 
     /// <summary>
-    /// Needed component to set the target and move
+    /// Needed component to set the target and shoot
     /// </summary>
     private TargetComponent targetComponent;
-    private MovementComponent moveComponent;
     private LauncherProjectileComponent launcherComponent;
 
 
     public void Start() {
         targetSelected = null;
         targetComponent = GetComponent<TargetComponent>();
-        moveComponent = GetComponent<MovementComponent>();
         launcherComponent = GetComponent<LauncherProjectileComponent>();
+
+        targetComponent.RegisterOnTargetMove(OnTargetMoved);
     }
 
     /// <summary>
@@ -81,8 +81,8 @@ public class SearchKillDistance : MonoBehaviour {
                     result = true;
                 } else {
                     inCadence = false;
-                    moveComponent.CanMove();
                     targetSelected = null;
+                    targetComponent.SetTargetObject(null);
                 }
             }
         }
@@ -90,19 +90,16 @@ public class SearchKillDistance : MonoBehaviour {
     }
 
     private void CheckTarget() {
-        //TODO measure performance (quadtree of heroes?) or quadtree of lifecomponent and filter by tag
-        GameObject[] targetsFounds = GameObject.FindGameObjectsWithTag(tagTarget);
-        GameObject target = GetClosestEnemy(targetsFounds);
+        Collider[] targetsRadius = Physics.OverlapSphere(transform.position, distanceToShoot);
+        GameObject target = GetClosestEnemy(targetsRadius);
 
-        if (target == null){
-            if(targetComponent.HasTarget()) targetComponent.SetTargetObject(null);
-            targetSelected = null;
-            return;
-        }
+        if (target == null) return;
 
         if (targetSelected == null || targetSelected != target) {
             targetSelected = target;
             targetComponent.SetTargetObject(targetSelected);
+            if (targetSelected == null) {
+            }
             targetSelected.GetComponent<LifeComponent>().RegisterOnDeath(OnTargetDeath);
         }
     }
@@ -118,16 +115,11 @@ public class SearchKillDistance : MonoBehaviour {
 
         Transform potentialTarget = targetSelected.transform;
         Vector3 directionToTarget = potentialTarget.position - transform.position;
-        float dSqrToTarget = directionToTarget.sqrMagnitude;
-        //if near, stop and shoot it
-        if (dSqrToTarget <= distanceToShoot * distanceToShoot) {
-            moveComponent.StopMovement();
-            launcherComponent.Launch(directionToTarget);
-            result = true;
-            //start cadence count
-            inCadence = true;
-            timerCadence = cadence;
-        }
+        launcherComponent.Launch(directionToTarget);
+        result = true;
+        //start cadence count
+        inCadence = true;
+        timerCadence = cadence;
 
         return result;
     }
@@ -137,16 +129,18 @@ public class SearchKillDistance : MonoBehaviour {
     /// </summary>
     /// <param name="enemies">array with potential targets</param>
     /// <returns>The closest enemy or null if array is null</returns>
-    private GameObject GetClosestEnemy(GameObject[] enemies) {
+    private GameObject GetClosestEnemy(Collider[] enemies) {
         GameObject target = null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
-        foreach (GameObject potential in enemies) {
-            if (potential == this.gameObject) continue;
+        foreach (Collider potentialCollider in enemies) {
+            GameObject potential = potentialCollider.gameObject;
+            if (potential.tag != tagTarget) continue;
 
-            Transform potentialTarget = potential.transform;
             LifeComponent life = potential.GetComponent<LifeComponent>(); //TODO urgent improve!!
             if (life == null || life.IsDead()) continue;
+
+            Transform potentialTarget = potential.transform;
             Vector3 directionToTarget = potentialTarget.position - currentPosition;
             float dSqrToTarget = directionToTarget.sqrMagnitude;
             if (dSqrToTarget < closestDistanceSqr) {
@@ -158,12 +152,24 @@ public class SearchKillDistance : MonoBehaviour {
         return target;
     }
 
+    private void OnTargetMoved() {
+        if (targetSelected == null) return; //the change is because there is no target anymore
+
+        //check the distance of the target, if not close, the target has move out of range
+        Transform potentialTarget = targetSelected.transform;
+        Vector3 directionToTarget = potentialTarget.position - transform.position;
+        float dSqrToTarget = directionToTarget.sqrMagnitude;
+        //if not near, forget it
+        if (dSqrToTarget + 1 > distanceToShoot * distanceToShoot) {
+            targetSelected = null;
+            targetComponent.SetTargetObject(null);
+        }
+    }
 
     private void OnTargetDeath() {
         if (targetSelected != null) {
             targetSelected.GetComponent<LifeComponent>().UnregisterOnDeath(OnTargetDeath);
-            targetSelected = null;
-            targetComponent.SetTargetObject(null);
         }
+        targetSelected = null;
     }
 }
