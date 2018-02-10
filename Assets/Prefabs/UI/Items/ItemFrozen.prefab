@@ -9,79 +9,59 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1003897608095694}
+  m_RootGameObject: {fileID: 1630040653210348}
   m_IsPrefabParent: 1
---- !u!1 &1003897608095694
+--- !u!1 &1630040653210348
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4958616058886108}
-  - component: {fileID: 212542358235551536}
-  - component: {fileID: 95195877546367050}
-  - component: {fileID: 114392860202223966}
+  - component: {fileID: 4200114347994458}
+  - component: {fileID: 212501653964795156}
+  - component: {fileID: 114172291775831390}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: ItemFrozen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4958616058886108
+--- !u!4 &4200114347994458
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1003897608095694}
+  m_GameObject: {fileID: 1630040653210348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95195877546367050
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1003897608095694}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1d22c7551d526484a9c18a930ce9ef57, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114392860202223966
+--- !u!114 &114172291775831390
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1003897608095694}
+  m_GameObject: {fileID: 1630040653210348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9d7776fb38a85b4d971759c570a7d1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 41110b55f6c8dc04080c6fb9bff33042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 2
-  radiusExplosion: 1
-  damage: 10
-  explosionPrefab: {fileID: 1533282478315654, guid: c200ccfe4eaaf7c44b168d7826b6526b,
+  spriteItemMenu: {fileID: 21300040, guid: 0debad0b63af8491598a42462304647b, type: 3}
+  spriteItem: {fileID: 21300040, guid: 0debad0b63af8491598a42462304647b, type: 3}
+  itemToClone: {fileID: 1373157347986412, guid: a2635ec3970c4e145ab22295f45ab88d,
     type: 2}
-  scaleExplosion: 2
---- !u!212 &212542358235551536
+--- !u!212 &212501653964795156
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1003897608095694}
+  m_GameObject: {fileID: 1630040653210348}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -110,13 +90,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d1ecf050f8ff64653ad3728095e33519, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.96, y: 0.96}
+  m_Size: {x: 0.24, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0

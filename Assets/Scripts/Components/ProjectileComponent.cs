@@ -82,6 +82,6 @@ public class ProjectileComponent : MonoBehaviour {
     /// Event from animator, it wait two seconds after the event (at the end of the animation more or less
     /// </summary>
     public void OnExplosion() {
-        Destroy(this.gameObject, 2);
+        Destroy(transform.parent.gameObject, 2);
     }
 }

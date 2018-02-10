@@ -13,6 +13,7 @@ public class LifeComponent : MonoBehaviour {
     private Action onDeath;
     private Action<int> onLifeChange;
     
+
     public void Damage(int damage) {
         life -= damage;
 
@@ -23,6 +24,7 @@ public class LifeComponent : MonoBehaviour {
             died = true;
             if (onDeath != null) {
                 onDeath();
+                Die();
             }
         }
     }
@@ -30,6 +32,16 @@ public class LifeComponent : MonoBehaviour {
 
     public bool IsDead() {
         return died;
+    }
+
+    private void Die() {
+        //TODO
+        //init animation Die
+        //else, remove gameobject
+    }
+
+    private void AnimationDied() {
+        //TODO
     }
 
 

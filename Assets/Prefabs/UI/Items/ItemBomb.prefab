@@ -9,31 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1813323746679616}
+  m_RootGameObject: {fileID: 1324230571424164}
   m_IsPrefabParent: 1
---- !u!1 &1813323746679616
+--- !u!1 &1324230571424164
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4020108240774222}
-  - component: {fileID: 212388893840477474}
-  - component: {fileID: 114179194204946860}
+  - component: {fileID: 4787861527085940}
+  - component: {fileID: 212562106246965864}
+  - component: {fileID: 114214883121033566}
   m_Layer: 0
-  m_Name: Brave
+  m_Name: ItemBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4020108240774222
+--- !u!4 &4787861527085940
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1813323746679616}
+  m_GameObject: {fileID: 1324230571424164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,27 +41,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114179194204946860
+--- !u!114 &114214883121033566
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1813323746679616}
+  m_GameObject: {fileID: 1324230571424164}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41110b55f6c8dc04080c6fb9bff33042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteItemMenu: {fileID: 21300000, guid: fce36efe801654cf6ad1f880510d9458, type: 3}
-  spriteItem: {fileID: 21300000, guid: fce36efe801654cf6ad1f880510d9458, type: 3}
-  itemToClone: {fileID: 1804256048086248, guid: faa620ff37910c945961306fcd8bda94,
+  spriteItemMenu: {fileID: 21300000, guid: d1ecf050f8ff64653ad3728095e33519, type: 3}
+  spriteItem: {fileID: 21300000, guid: d1ecf050f8ff64653ad3728095e33519, type: 3}
+  itemToClone: {fileID: 1003897608095694, guid: 92ae296795f5dce46922a8f6567dfe31,
     type: 2}
---- !u!212 &212388893840477474
+--- !u!212 &212562106246965864
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1813323746679616}
+  m_GameObject: {fileID: 1324230571424164}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d1ecf050f8ff64653ad3728095e33519, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,5 +98,5 @@ SpriteRenderer:
   m_Size: {x: 0.24, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0

@@ -70,8 +70,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsInventory:
   - {fileID: 1195854645041284, guid: d900d6f79bb39944b8aaf3c9da51d788, type: 2}
-  - {fileID: 1881776067655114, guid: dcd4cebd875a6ef4d8652a405a58237c, type: 2}
-  - {fileID: 1813323746679616, guid: 2d44e3bc8057aae4cb8c012c517d7d9b, type: 2}
+  - {fileID: 1324230571424164, guid: 400b757dafaf8f846b129c34e6f11b0d, type: 2}
+  - {fileID: 1630040653210348, guid: dd43fee421f931241a1511d35579c147, type: 2}
+  - {fileID: 1712213467518244, guid: 12470d2924de2df409429ae88cd85de7, type: 2}
   slotPrefab: {fileID: 1133372493426210, guid: 1e360ce788fb04b438e15c224a427218, type: 2}
 --- !u!114 &114739234804985266
 MonoBehaviour:
