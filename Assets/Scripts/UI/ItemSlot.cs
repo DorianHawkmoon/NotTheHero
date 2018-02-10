@@ -6,8 +6,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     /// <summary>
     /// Data about the item
     /// </summary>
-    [SerializeField]
-    private Item item;
+    public Item item;
     /// <summary>
     /// Only one item to be dragged at a time (for all instances)
     /// </summary>
@@ -36,7 +35,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     private GameObject DummieItem() {
         GameObject dummie = new GameObject();
         dummie.name = "draging object";
-        dummie.transform.localScale = item.ScaleItem;
+        dummie.transform.localScale = item.GetScale();
 
         rendererDragged = dummie.AddComponent<SpriteRenderer>();
         rendererDragged.sprite = item.GetSprite();
@@ -48,7 +47,6 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     public void OnBeginDrag(PointerEventData eventData) {
         itemBeingDragged = DummieItem();
         GetComponent<CanvasGroup>().blocksRaycasts = false;
-        
     }
 
     public void OnDrag(PointerEventData eventData) {
