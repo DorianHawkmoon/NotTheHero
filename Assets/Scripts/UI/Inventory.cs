@@ -1,6 +1,11 @@
-﻿using UnityEngine;
+﻿//#define DEBUG_Inventory
+
+using UnityEngine;
 
 public class Inventory : MonoBehaviour {
+#if DEBUG_Inventory
+    private static DebugLog log = new DebugLog("Inventory"); 
+#endif
 
     public GameObject[] itemsInventory;
 

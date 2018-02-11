@@ -1,6 +1,17 @@
-﻿using UnityEngine;
+﻿#define DEBUG_SearchKillDistance
 
+using UnityEngine;
+
+/// <summary>
+/// Class for a game object who will look and go to a target, and at some distance
+/// it will attack it until its dead or go out of range
+/// Will look for the nearest target
+/// </summary>
 public class SearchKillDistance : MonoBehaviour {
+#if DEBUG_SearchKillDistance
+    private static DebugLog log = new DebugLog("SearchKillDistance");
+#endif
+
     /// <summary>
     /// At what distance it start shooting
     /// </summary>
@@ -12,7 +23,7 @@ public class SearchKillDistance : MonoBehaviour {
     [SerializeField]
     private float cadence = 1;
     /// <summary>
-    /// Type of targets to look for
+    /// Type of targets to look for //TODO improve tag treatment
     /// </summary>
     [TagSelector]
     [SerializeField]
@@ -38,7 +49,9 @@ public class SearchKillDistance : MonoBehaviour {
     private MovementComponent moveComponent;
     private LauncherProjectileComponent launcherComponent;
 
-
+    /// <summary>
+    /// Get needed components
+    /// </summary>
     public void Start() {
         targetSelected = null;
         targetComponent = GetComponent<TargetComponent>();
@@ -54,7 +67,6 @@ public class SearchKillDistance : MonoBehaviour {
     /// After the shoot, it wait for a cadence. When the cadence is over
     /// it check for the same target and shoot again if close
     /// else it set the movement and look for another target
-    /// 
     /// </summary>
     public void Update() {
         if (!CadenceShoot() && !inCadence) {  //if haven't shoot and not waiting(cadence)...
@@ -74,6 +86,9 @@ public class SearchKillDistance : MonoBehaviour {
             timerCadence -= Time.deltaTime;
 
             if (timerCadence < 0) {
+                #if DEBUG_SearchKillDistance
+                log.Log("Timer cadence over.");
+                #endif
                 //check the same target again to see if still close
                 if (CheckDistanceShoot()) {
                     //it has shoot, start cadence again
@@ -89,6 +104,9 @@ public class SearchKillDistance : MonoBehaviour {
         return result;
     }
 
+    /// <summary>
+    /// Check the nearest target
+    /// </summary>
     private void CheckTarget() {
         //TODO measure performance (quadtree of heroes?) or quadtree of lifecomponent and filter by tag
         GameObject[] targetsFounds = GameObject.FindGameObjectsWithTag(tagTarget);
@@ -100,7 +118,12 @@ public class SearchKillDistance : MonoBehaviour {
             return;
         }
 
+        //if found a target, set it and watch its life (if someone else kill it)
         if (targetSelected == null || targetSelected != target) {
+            #if DEBUG_SearchKillDistance
+            log.Log("Target selected.");
+            #endif
+
             targetSelected = target;
             targetComponent.SetTargetObject(targetSelected);
             targetSelected.GetComponent<LifeComponent>().RegisterOnDeath(OnTargetDeath);
@@ -121,6 +144,10 @@ public class SearchKillDistance : MonoBehaviour {
         float dSqrToTarget = directionToTarget.sqrMagnitude;
         //if near, stop and shoot it
         if (dSqrToTarget <= distanceToShoot * distanceToShoot) {
+            #if DEBUG_SearchKillDistance
+            log.Log("Target close, shooting it.");
+            #endif
+
             moveComponent.StopMovement();
             launcherComponent.Launch(directionToTarget);
             result = true;
@@ -133,7 +160,7 @@ public class SearchKillDistance : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Check what target is near given a list of potential targets
     /// </summary>
     /// <param name="enemies">array with potential targets</param>
     /// <returns>The closest enemy or null if array is null</returns>
@@ -141,7 +168,8 @@ public class SearchKillDistance : MonoBehaviour {
         GameObject target = null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
-        foreach (GameObject potential in enemies) {
+        for(int i=0; i<enemies.Length; ++i){
+            GameObject potential = enemies[i];
             if (potential == this.gameObject) continue;
 
             Transform potentialTarget = potential.transform;
@@ -158,9 +186,15 @@ public class SearchKillDistance : MonoBehaviour {
         return target;
     }
 
-
+    /// <summary>
+    /// If the target die, clean it
+    /// </summary>
     private void OnTargetDeath() {
         if (targetSelected != null) {
+            #if DEBUG_SearchKillDistance
+            log.Log("Target is dead.");
+            #endif
+
             targetSelected.GetComponent<LifeComponent>().UnregisterOnDeath(OnTargetDeath);
             targetSelected = null;
             targetComponent.SetTargetObject(null);

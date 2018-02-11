@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
+
 /// <summary>
 /// http://www.brechtos.com/tagselectorattribute/
 /// </summary>
-
 [CustomPropertyDrawer(typeof(TagSelectorAttribute))]
 public class TagSelectorPropertyDrawer : PropertyDrawer {
 

@@ -1,50 +1,65 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿#define DEBUG_KillDistance
 
+using UnityEngine;
+
+/// <summary>
+/// Class for a game object which will look for any target inside an area and shoot it
+/// </summary>
 public class KillDistance : MonoBehaviour {
+#if DEBUG_KillDistance
+    private static DebugLog log = new DebugLog("KillDistance");
+#endif
+
+
     /// <summary>
     /// At what distance it start shooting
     /// </summary>
     [SerializeField]
     private float distanceToShoot = 1;
+
     /// <summary>
     /// Cadence of shooting
     /// </summary>
     [SerializeField]
     private float cadence = 1;
+
     /// <summary>
     /// Type of targets to look for
     /// </summary>
     [TagSelector]
     [SerializeField]
     private string tagTarget = "";
+
     /// <summary>
-    /// 
+    /// Minimum value to wait until change its look direction
     /// </summary>
     [SerializeField]
     private float minTimeRandomLook;
     /// <summary>
-    /// 
+    /// Maximum value to wait until change its look direction
     /// </summary>
     [SerializeField]
     private float maxTimeRandomLook;
-
 
     /// <summary>
     /// The timer for the cadence
     /// </summary>
     private float timerCadence = 0;
+
     /// <summary>
     /// If in cadence
     /// </summary>
     private bool inCadence = false;
+    
     /// <summary>
     /// Target is going through
     /// </summary>
     private GameObject targetSelected; //TODO improve this by getting a targetable component which specify the exact point
                                        //to shoot and look for
-                                       
+    
+    /// <summary>
+    /// Timer for random looking
+    /// </summary>
     private float timerRandomLooking;
 
     /// <summary>
@@ -54,8 +69,11 @@ public class KillDistance : MonoBehaviour {
     private LauncherProjectileComponent launcherComponent;
     private LookingComponent lookingComponent;
 
-
+    /// <summary>
+    /// Get components needed
+    /// </summary>
     public void Start() {
+        //seed random
         Random.InitState(System.Environment.TickCount);
         targetSelected = null;
         timerRandomLooking = Random.Range(minTimeRandomLook, maxTimeRandomLook);
@@ -102,6 +120,9 @@ public class KillDistance : MonoBehaviour {
             timerCadence -= Time.deltaTime;
 
             if (timerCadence < 0) {
+                #if DEBUG_KillDistance
+                log.Log("Timer cadence over.");
+                #endif
                 //check the same target again to see if still close
                 if (CheckDistanceShoot()) {
                     //it has shoot, start cadence again
@@ -118,6 +139,9 @@ public class KillDistance : MonoBehaviour {
         return result;
     }
 
+    /// <summary>
+    /// Check if there is any target near
+    /// </summary>
     private void CheckTarget() {
         Collider[] targetsRadius = Physics.OverlapSphere(transform.position, distanceToShoot);
         GameObject target = GetClosestEnemy(targetsRadius);
@@ -125,6 +149,9 @@ public class KillDistance : MonoBehaviour {
         if (target == null) return;
 
         if (targetSelected == null || targetSelected != target) {
+            #if DEBUG_KillDistance
+            log.Log("Target selected.");
+            #endif
             targetSelected = target;
             targetComponent.SetTargetObject(targetSelected);
             targetSelected.GetComponent<LifeComponent>().RegisterOnDeath(OnTargetDeath);
@@ -142,6 +169,9 @@ public class KillDistance : MonoBehaviour {
 
         Transform potentialTarget = targetSelected.transform;
         Vector3 directionToTarget = potentialTarget.position - transform.position;
+        #if DEBUG_KillDistance
+            log.Log("Target close, shooting it.");
+        #endif
         launcherComponent.Launch(directionToTarget);
         result = true;
         //start cadence count
@@ -152,7 +182,7 @@ public class KillDistance : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Get the nearest enemy given a list of potential targets
     /// </summary>
     /// <param name="enemies">array with potential targets</param>
     /// <returns>The closest enemy or null if array is null</returns>
@@ -179,8 +209,11 @@ public class KillDistance : MonoBehaviour {
         return target;
     }
 
+    /// <summary>
+    /// When the target moves, follow it with the eyes (if still inside the range)
+    /// </summary>
     private void OnTargetMoved() {
-        if (targetSelected == null) return; //the change is because there is no target anymore
+        if (targetSelected == null) return;
 
         //check the distance of the target, if not close, the target has move out of range
         Transform potentialTarget = targetSelected.transform;
@@ -194,6 +227,9 @@ public class KillDistance : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// If the target die, clean it
+    /// </summary>
     private void OnTargetDeath() {
         if (targetSelected != null) {
             targetSelected.GetComponent<LifeComponent>().UnregisterOnDeath(OnTargetDeath);

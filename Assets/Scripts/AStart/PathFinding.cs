@@ -3,19 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+/// <summary>
+/// Class responsible for finding paths given start and end points
+/// </summary>
 public class PathFinding : MonoBehaviour {
+    /// <summary>
+    /// Requester where petitions are stored
+    /// </summary>
     PathRequestManager requestManager;
-    private Grid grid;
+    private GridLevel grid;
 
+    /// <summary>
+    /// Get the requester and grid of A*
+    /// </summary>
     public void Awake() {
         requestManager = GetComponent<PathRequestManager>();
-        grid = GetComponent<Grid>();
+        grid = GetComponent<GridLevel>();
     }
     
+    /// <summary>
+    /// Start finding a specific path
+    /// </summary>
+    /// <param name="startPosition"></param>
+    /// <param name="targetPosition"></param>
     public void StartFindPath(Vector3 startPosition, Vector3 targetPosition) {
         StartCoroutine(FindPath(startPosition, targetPosition));
     }
 
+    /// <summary>
+    /// Find a path
+    /// </summary>
+    /// <param name="startPositon"></param>
+    /// <param name="targetPosition"></param>
+    /// <returns></returns>
     private IEnumerator FindPath(Vector3 startPositon, Vector3 targetPosition) {
         //Stopwatch sw = new Stopwatch();
         //sw.Start();
@@ -72,6 +92,13 @@ public class PathFinding : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// After setting parents of nodes looking for a path
+    /// do reverse way and store the array of nodes of the path in correct order
+    /// </summary>
+    /// <param name="startNode"></param>
+    /// <param name="targetNode"></param>
+    /// <returns></returns>
     private Vector3[] RetracePath(Node startNode, Node targetNode) {
         List<Node> path = new List<Node>();
         Node currentNode = targetNode;
@@ -85,6 +112,11 @@ public class PathFinding : MonoBehaviour {
         return waypoints;
     }
 
+    /// <summary>
+    /// Simplify the path giving only the needed points to follow the path
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
     private Vector3[] SimplifyPath(List<Node> path) {
         List<Vector3> waypoints = new List<Vector3>();
         Vector2 directionOld = Vector2.zero;
@@ -99,6 +131,13 @@ public class PathFinding : MonoBehaviour {
         return waypoints.ToArray();
     }
 
+    /// <summary>
+    /// Distance between nodes
+    /// Magic numbers comes from
+    /// </summary>
+    /// <param name="nodeA"></param>
+    /// <param name="nodeB"></param>
+    /// <returns></returns>
     private int GetDistance(Node nodeA, Node nodeB) {
         int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
         int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);

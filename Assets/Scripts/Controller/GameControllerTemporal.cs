@@ -1,11 +1,16 @@
-﻿using UnityEngine;
+﻿//#define DEBUG_GameControllerTemporal
 
+using UnityEngine;
+//TODO allow diferents temporal parents (maybe other class and for example heroes)
 /// <summary>
 /// Game Controller's component used to organize all the temporal
 /// objects created on runtime which are not parented to any
 /// object (like particle systems).
 /// </summary>
 public class GameControllerTemporal : MonoBehaviour {
+#if DEBUG_GameControllerTemporal
+    private static DebugLog log = new DebugLog("GameControllerTemporal");
+#endif
 
     /// <summary>
     /// The name of the temporal parent. If this object doesn't exist,
@@ -21,6 +26,9 @@ public class GameControllerTemporal : MonoBehaviour {
     void Awake() {
         // Creates the temporal parent
         CreateTemporalParent();
+#if DEBUG_GameControllerTemporal
+        log.Log("Temporal folder generated.");
+#endif
     }
 
     /// <summary>
@@ -44,6 +52,9 @@ public class GameControllerTemporal : MonoBehaviour {
     /// </summary>
     /// <param name="temporalObject">The temporal object to register</param>
     public static void AddTemporal(Transform temporalObject) {
+#if DEBUG_GameControllerTemporal
+        log.Log("Temporal object added.");
+#endif
         temporalObject.parent = temporalParent;
     }
 

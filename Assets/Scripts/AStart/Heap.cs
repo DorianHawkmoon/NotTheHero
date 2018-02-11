@@ -11,16 +11,32 @@ public interface IHeapItem<T> : IComparable<T> {
     }
 }
 
-
+/// <summary>
+/// Heap class for classes which implements the heap interface
+/// </summary>
+/// <typeparam name="T">type of data for the heap</typeparam>
 public class Heap<T> where T : IHeapItem<T> {
-
+    /// <summary>
+    /// array of items
+    /// </summary>
     private T[] items;
+    /// <summary>
+    /// how many items in the heap
+    /// </summary>
     private int currentItemCount;
 
+    /// <summary>
+    /// Max size for the heap
+    /// </summary>
+    /// <param name="maxHeapSize"></param>
     public Heap(int maxHeapSize) {
         items = new T[maxHeapSize];
     }
 
+    /// <summary>
+    /// Add an item and sort the heap
+    /// </summary>
+    /// <param name="item"></param>
     public void Add(T item) {
         item.HeapIndex = currentItemCount;
         items[currentItemCount] = item;
@@ -28,6 +44,10 @@ public class Heap<T> where T : IHeapItem<T> {
         ++currentItemCount;
     }
 
+    /// <summary>
+    /// Remove the top of the heap
+    /// </summary>
+    /// <returns></returns>
     public T RemoveFirst() {
         T firstItem = items[0];
         currentItemCount--;
@@ -37,20 +57,36 @@ public class Heap<T> where T : IHeapItem<T> {
         return firstItem;
     }
 
+    /// <summary>
+    /// Update the sub-tree of the given node
+    /// </summary>
+    /// <param name="item"></param>
     public void UpdateItem(T item) {
         SortUp(item);
     }
 
+    /// <summary>
+    /// How many elements
+    /// </summary>
     public int Count {
         get {
             return currentItemCount;
         }
     }
 
+    /// <summary>
+    /// If the heap contains the item
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
     public bool Contains(T item) {
         return Equals(items[item.HeapIndex], item);
     }
 
+    /// <summary>
+    /// Put the node one level below
+    /// </summary>
+    /// <param name="item"></param>
     private void SortDown(T item) {
         while (true) {
             int childIndexLeft = item.HeapIndex * 2 + 1;
@@ -79,6 +115,10 @@ public class Heap<T> where T : IHeapItem<T> {
         }
     }
 
+    /// <summary>
+    /// Put the node one level above
+    /// </summary>
+    /// <param name="item"></param>
     private void SortUp(T item) {
         int parentIndex = (item.HeapIndex - 1) / 2;
 
@@ -94,6 +134,11 @@ public class Heap<T> where T : IHeapItem<T> {
         }
     }
 
+    /// <summary>
+    /// Swap two nodes position in the heap
+    /// </summary>
+    /// <param name="itemA"></param>
+    /// <param name="itemB"></param>
     private void Swap(T itemA, T itemB) {
         items[itemA.HeapIndex] = itemB;
         items[itemB.HeapIndex] = itemA;

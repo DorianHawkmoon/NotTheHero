@@ -1,23 +1,51 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid  : MonoBehaviour {
+/// <summary>
+/// Grid of the level to be used by A* algorithm
+/// </summary>
+public class GridLevel  : MonoBehaviour {
+    /// <summary>
+    /// If we show gizmos
+    /// </summary>
     public bool showGrid=false;
+    /// <summary>
+    /// The layer that determines the unwalkable nodes
+    /// </summary>
     public LayerMask unwalkableMask;
+    /// <summary>
+    /// Size of the world grid
+    /// </summary>
     public Vector2 gridWorldSize;
+    /// <summary>
+    /// Size of a node
+    /// </summary>
     public float nodeRadius;
-
+    /// <summary>
+    /// Grid
+    /// </summary>
     private Node[,] grid;
-
+    /// <summary>
+    /// diameter of the node
+    /// </summary>
     private float nodeDiameter;
+    /// <summary>
+    /// size of grid in number of nodes
+    /// </summary>
     private int gridSizeX, gridSizeY;
 
+    /// <summary>
+    /// Getter of node diameter
+    /// </summary>
     public float NodeDiameter {
         get {
             return nodeDiameter;
         }
     }
 
+    /// <summary>
+    /// Create the grid
+    /// </summary>
     public void Awake() {
         nodeDiameter = nodeRadius * 2;
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
@@ -26,12 +54,18 @@ public class Grid  : MonoBehaviour {
         CreateGrid();
     }
 
+    /// <summary>
+    /// Get number of nodes
+    /// </summary>
     public int MaxSize {
         get {
             return gridSizeX * gridSizeY;
         }
     }
 
+    /// <summary>
+    /// Create the grid
+    /// </summary>
     private void CreateGrid() {
         grid = new Node[gridSizeX, gridSizeY];
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x/2 -Vector3.up*gridWorldSize.y/2;
@@ -47,6 +81,11 @@ public class Grid  : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Get neighbours of a given node
+    /// </summary>
+    /// <param name="node"></param>
+    /// <returns></returns>
     public List<Node> GetNeighbours(Node node) {
         List<Node> neighbours = new List<Node>();
 
@@ -69,6 +108,11 @@ public class Grid  : MonoBehaviour {
         return neighbours;
     }
 
+    /// <summary>
+    /// Get a node given world position
+    /// </summary>
+    /// <param name="position"></param>
+    /// <returns></returns>
     public Node GetNodeFromWorldPoint(Vector3 position) {
         float percentX = (position.x + gridWorldSize.x / 2) / gridWorldSize.x;
         float percentY = (position.y + gridWorldSize.y / 2) / gridWorldSize.y;
@@ -82,6 +126,9 @@ public class Grid  : MonoBehaviour {
         return grid[x, y];
     }
 
+    /// <summary>
+    /// Draw grid
+    /// </summary>
     public void OnDrawGizmos() {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, gridWorldSize.y, 0.5f));
 
