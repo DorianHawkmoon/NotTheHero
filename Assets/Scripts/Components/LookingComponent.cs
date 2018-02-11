@@ -16,6 +16,10 @@ public class LookingComponent : MonoBehaviour {
         target.RegisterOnTargetMove(OnTargetChanged);
     }
 
+    public void Look(Vector3 direction) {
+        Animations(direction);
+    }
+
     private void OnTargetChanged() {
         Vector3 destiny = target.GetLastTargetPosition();
         Animations(destiny);

@@ -63,7 +63,6 @@ public class MovementComponent : MonoBehaviour {
 
     private void CleanPath() {
         targetIndex = 0;
-        //moveDirection = Vector3.zero;
         moving = false;
         Animations(Vector3.zero);
     }

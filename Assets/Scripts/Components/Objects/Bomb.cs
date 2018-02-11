@@ -32,7 +32,6 @@ public class Bomb : MonoBehaviour {
 
         Animator anim = GetComponent<Animator>();
         if (anim != null) {
-            Debug.Log("got an animator");
             AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
             if (clips.Length > 0) {
                 float speed = 1.0f / (time / clips[0].length);

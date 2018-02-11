@@ -137,6 +137,8 @@ MonoBehaviour:
   distanceToShoot: 2
   cadence: 0.5
   tagTarget: Hero
+  minTimeRandomLook: 1
+  maxTimeRandomLook: 2
 --- !u!114 &114682800476480820
 MonoBehaviour:
   m_ObjectHideFlags: 1

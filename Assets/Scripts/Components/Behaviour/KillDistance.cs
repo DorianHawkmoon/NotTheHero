@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class KillDistance : MonoBehaviour {
     /// <summary>
@@ -18,6 +20,18 @@ public class KillDistance : MonoBehaviour {
     [SerializeField]
     private string tagTarget = "";
     /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField]
+    private float minTimeRandomLook;
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField]
+    private float maxTimeRandomLook;
+
+
+    /// <summary>
     /// The timer for the cadence
     /// </summary>
     private float timerCadence = 0;
@@ -29,19 +43,25 @@ public class KillDistance : MonoBehaviour {
     /// Target is going through
     /// </summary>
     private GameObject targetSelected; //TODO improve this by getting a targetable component which specify the exact point
-    //to shoot and look for
+                                       //to shoot and look for
+                                       
+    private float timerRandomLooking;
 
     /// <summary>
     /// Needed component to set the target and shoot
     /// </summary>
     private TargetComponent targetComponent;
     private LauncherProjectileComponent launcherComponent;
+    private LookingComponent lookingComponent;
 
 
     public void Start() {
+        Random.InitState(System.Environment.TickCount);
         targetSelected = null;
+        timerRandomLooking = Random.Range(minTimeRandomLook, maxTimeRandomLook);
         targetComponent = GetComponent<TargetComponent>();
         launcherComponent = GetComponent<LauncherProjectileComponent>();
+        lookingComponent = GetComponent<LookingComponent>();
 
         targetComponent.RegisterOnTargetMove(OnTargetMoved);
     }
@@ -61,6 +81,14 @@ public class KillDistance : MonoBehaviour {
             //check for the target, the distance and shoot if posible
             CheckTarget();
             CheckDistanceShoot();
+        }
+
+        if (targetSelected == null) {
+            timerRandomLooking -= Time.deltaTime;
+            if (timerRandomLooking < 0 && lookingComponent!=null) {
+                timerRandomLooking = Random.Range(minTimeRandomLook, maxTimeRandomLook);
+                lookingComponent.Look(new Vector3(Random.value, Random.value));
+            }
         }
     }
 
@@ -83,6 +111,7 @@ public class KillDistance : MonoBehaviour {
                     inCadence = false;
                     targetSelected = null;
                     targetComponent.SetTargetObject(null);
+                    timerRandomLooking = Random.Range(minTimeRandomLook, maxTimeRandomLook);
                 }
             }
         }
@@ -98,8 +127,6 @@ public class KillDistance : MonoBehaviour {
         if (targetSelected == null || targetSelected != target) {
             targetSelected = target;
             targetComponent.SetTargetObject(targetSelected);
-            if (targetSelected == null) {
-            }
             targetSelected.GetComponent<LifeComponent>().RegisterOnDeath(OnTargetDeath);
         }
     }
@@ -163,6 +190,7 @@ public class KillDistance : MonoBehaviour {
         if (dSqrToTarget + 1 > distanceToShoot * distanceToShoot) {
             targetSelected = null;
             targetComponent.SetTargetObject(null);
+            timerRandomLooking = Random.Range(minTimeRandomLook, maxTimeRandomLook);
         }
     }
 
@@ -171,5 +199,7 @@ public class KillDistance : MonoBehaviour {
             targetSelected.GetComponent<LifeComponent>().UnregisterOnDeath(OnTargetDeath);
         }
         targetSelected = null;
+        timerRandomLooking = Random.Range(minTimeRandomLook, maxTimeRandomLook);
     }
+
 }
