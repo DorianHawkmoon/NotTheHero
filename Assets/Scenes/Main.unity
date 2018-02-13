@@ -393,22 +393,22 @@ Prefab:
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 693.75
+      value: 685.875
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -55.25
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 182.5
+      value: 180.25
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 70.5
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
@@ -1782,22 +1782,22 @@ Prefab:
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 298.75
+      value: 295.375
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -55.25
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 182.5
+      value: 180.25
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 70.5
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
@@ -2550,22 +2550,22 @@ Prefab:
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 101.25
+      value: 100.125
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -55.25
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 182.5
+      value: 180.25
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 70.5
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
@@ -2981,6 +2981,11 @@ Prefab:
     - target: {fileID: 1876461197012248, guid: 75c24e1ce7948824f8cf82a6e3f57a57, type: 2}
       propertyPath: m_Name
       value: Charco_veneno_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212576956502780066, guid: 75c24e1ce7948824f8cf82a6e3f57a57,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75c24e1ce7948824f8cf82a6e3f57a57, type: 2}
@@ -3763,7 +3768,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300048, guid: b27d9da63a52b4bb38d9ebdb411ac048, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1def144786f22455f974d30cae1ba715, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4146,7 +4151,7 @@ SpriteRenderer:
   m_Size: {x: 6.26, y: 4.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &1437762671
 Transform:
@@ -4302,22 +4307,22 @@ Prefab:
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 496.25
+      value: 490.625
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -55.25
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 182.5
+      value: 180.25
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 70.5
       objectReference: {fileID: 0}
     - target: {fileID: 224822198248523254, guid: 1e360ce788fb04b438e15c224a427218,
         type: 2}
@@ -4613,7 +4618,7 @@ SpriteRenderer:
   m_Size: {x: 0.24, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &1699112208
 Transform:
@@ -4983,7 +4988,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1866579009}
   - component: {fileID: 1866579008}
-  - component: {fileID: 1866579010}
   m_Layer: 0
   m_Name: Heroe1
   m_TagString: Untagged
@@ -5023,50 +5027,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1866579010
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1866579007}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
 --- !u!1 &1878563655
 GameObject:
   m_ObjectHideFlags: 0
@@ -5138,7 +5098,7 @@ SpriteRenderer:
   m_Size: {x: 0.24, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &1878563658
 Transform:
@@ -5592,7 +5552,7 @@ SpriteRenderer:
   m_Size: {x: 0.24, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &2045343334
 Transform:
