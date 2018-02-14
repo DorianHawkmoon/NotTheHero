@@ -7,9 +7,6 @@ using System;
 /// Component used to keep track of a target and warns if it moved or has changed
 /// </summary>
 public class TargetComponent : MonoBehaviour {
-#if DEBUG_TargetComponent
-    private static DebugLog log = new DebugLog("TargetComponent");
-#endif
 
     /// <summary>
     /// Which distance from its original position we consider a movement
@@ -71,7 +68,7 @@ public class TargetComponent : MonoBehaviour {
     /// </summary>
     private void SetTargetMove() {
 #if DEBUG_TargetComponent
-        log.Log("Movement of target.");
+        Debug.Log("Movement of target.");
 #endif
         if (targetObject != null) {
             position = targetObject.transform.position;
@@ -87,7 +84,7 @@ public class TargetComponent : MonoBehaviour {
     /// <param name="newTarget">new target to track</param>
     public void SetTargetObject(GameObject newTarget) {
 #if DEBUG_TargetComponent
-        log.Log("Change target.");
+        Debug.Log("Change target.");
 #endif
         targetObject = newTarget;
         if (targetObject != null) {

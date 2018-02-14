@@ -58,7 +58,8 @@ GameObject:
   - component: {fileID: 114459458624651048}
   - component: {fileID: 114805717361636268}
   - component: {fileID: 114682800476480820}
-  m_Layer: 0
+  - component: {fileID: 114406386256838186}
+  m_Layer: 9
   m_Name: Brave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +124,28 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114406386256838186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1804256048086248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9998b4ee7e501d94c82348d97860e0c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerColliders:
+  - Obstacles
+  layerCollidersExtended:
+  - Heroes
+  centerOffset: {x: 0, y: 0.3, z: 0}
+  isSphere: 0
+  radius: 0.3
+  radiusExtended: 1
+  isBox: 1
+  sizeBox: {x: 0.75, y: 1, z: 0}
+  sizeBoxExtended: {x: 1.3, y: 1.3, z: 1}
 --- !u!114 &114459458624651048
 MonoBehaviour:
   m_ObjectHideFlags: 1

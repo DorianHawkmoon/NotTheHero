@@ -7,9 +7,6 @@ using UnityEngine;
 /// Given a target, look for a path to it
 /// </summary>
 public class PathFinderComponent : MonoBehaviour {
-#if DEBUG_PathFinderComponent
-    private static DebugLog log = new DebugLog("PathFinderComponent");
-#endif
 
     /// <summary>
     /// Target component who tell the destination
@@ -39,17 +36,17 @@ public class PathFinderComponent : MonoBehaviour {
     /// </summary>
     public void OnTargetChanged() {
         #if DEBUG_PathFinderComponent
-        log.Log("Target changed.");
+        Debug.Log("Target changed.");
         #endif
 
         if (target.HasTarget()) {
             #if DEBUG_PathFinderComponent
-            log.Log("Requesting new path.");
+            Debug.Log("Requesting new path.");
             #endif
             PathRequestManager.RequestPath(transform.position, target.GetTargetPosition(), OnPathFound);
         } else {
             #if DEBUG_PathFinderComponent
-            log.Log("There is no target.");
+            Debug.Log("There is no target.");
             #endif
             path = null;
             onPathChange();
@@ -58,7 +55,7 @@ public class PathFinderComponent : MonoBehaviour {
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful) {
         #if DEBUG_PathFinderComponent
-        log.Log("Achieved path: "+pathSuccessful+".");
+        Debug.Log("Achieved path: "+pathSuccessful+".");
         #endif
 
         if (pathSuccessful) {
@@ -73,14 +70,14 @@ public class PathFinderComponent : MonoBehaviour {
 
     public void RegisterOnPathChange(Action callback) {
         #if DEBUG_PathFinderComponent
-        log.Log("Suscriber added to path change.");
+        Debug.Log("Suscriber added to path change.");
         #endif
         onPathChange += callback;
     }
 
     public void UnregisterOnPathChange(Action callback) {
         #if DEBUG_PathFinderComponent
-        log.Log("Suscriber deleted to path change.");
+        Debug.Log("Suscriber deleted to path change.");
         #endif
         onPathChange -= callback;
     }

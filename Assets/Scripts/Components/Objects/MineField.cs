@@ -14,9 +14,6 @@ using UnityEngine;
 /// Specific class for a mine field
 /// </summary>
 public class MineField : MonoBehaviour {
-#if DEBUG_MineField
-    private static DebugLog log = new DebugLog("MineField");
-#endif
 
     /// <summary>
     /// Little delay for the mine to activate
@@ -83,7 +80,7 @@ public class MineField : MonoBehaviour {
         if (activated) {
             if (other.gameObject.tag == "Hero") { //TODO tags
                 #if DEBUG_MineField
-                log.Log("Mine triggered.");
+                Debug.Log("Mine triggered.");
                 #endif
                 Explode();
             }

@@ -18,7 +18,7 @@ public class GridLevel  : MonoBehaviour {
     /// </summary>
     public Vector2 gridWorldSize;
     /// <summary>
-    /// Size of a node
+    /// Size of a node (radius)
     /// </summary>
     public float nodeRadius;
     /// <summary>

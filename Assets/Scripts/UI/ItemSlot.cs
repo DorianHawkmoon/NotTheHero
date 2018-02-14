@@ -3,14 +3,12 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 /// <summary>
 /// Class to control the behaviour of the slots in game inventory
 /// </summary>
 public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler {
-#if DEBUG_ItemSlot
-    private static DebugLog log = new DebugLog("ItemSlot"); 
-#endif
 
     /// <summary>
     /// Data about the item
@@ -32,6 +30,18 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     /// If the item is ready to use (TODO when objects are not available yet)
     /// </summary>
     private bool unlocked=true;
+    /// <summary>
+    /// Layer the item will collide while dragging
+    /// </summary>
+    private int layerCollision;
+    /// <summary>
+    /// Layer the item will collide while dragging
+    /// </summary>
+    private int layerCollisionExtended;
+    /// <summary>
+    /// The overlap shape of the item
+    /// </summary>
+    private OverlapItem overlapItem;
 
     /// <summary>
     /// Start getting important information
@@ -40,13 +50,30 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         //in case there is no item, destroy the slot
         if (item == null) {
             #if DEBUG_ItemSlot
-            log.Log("Slot destroyed.");
+            Debug.Log("Slot destroyed.");
             #endif
             //destroy myself
             Destroy(gameObject);
         } else {
             imageMenu = GetComponent<Image>();
             imageMenu.sprite = item.SpriteMenu;
+
+            overlapItem = item.ItemToClone.GetComponent<OverlapItem>();
+            
+            layerCollision = 0;
+            LayerMask[] layers = overlapItem.LayersColliders;
+            for (int i = 0; i < layers.Length; ++i) {
+                int layer = Utils.ToLayer(layers[i]);
+                layerCollision |= (1 << layer);
+            }
+
+            layerCollisionExtended = 0;
+            layers = overlapItem.LayersCollidersExtended;
+            for (int i = 0; i < layers.Length; ++i) {
+                int layer = Utils.ToLayer(layers[i]);
+                layerCollisionExtended |= (1 << layer);
+            }
+            
         }
     }
 
@@ -58,12 +85,13 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         GameObject dummie = new GameObject("dragged object");
         //set scale
         dummie.transform.localScale = item.ScaleItem;
+        dummie.layer = LayerMask.NameToLayer("Menu Items");
         //add the sprite to be shown
         rendererDragged = dummie.AddComponent<SpriteRenderer>();
         rendererDragged.sprite = item.SpriteItem;
 
         #if DEBUG_ItemSlot
-        log.Log("Created dummie item.");
+        Debug.Log("Created dummie item.");
         #endif
         GameControllerTemporal.AddTemporal(dummie);
         return dummie;
@@ -75,7 +103,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     /// <param name="eventData"></param>
     public void OnBeginDrag(PointerEventData eventData) {
         #if DEBUG_ItemSlot
-        log.Log("OnBeginDrag.");
+        Debug.Log("OnBeginDrag.");
         #endif
         itemBeingDragged = DummieItem();
         GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -87,7 +115,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     /// <param name="eventData"></param>
     public void OnDrag(PointerEventData eventData) {
         #if DEBUG_ItemSlot
-        log.Log("OnDrag.");
+        Debug.Log("OnDrag.");
         #endif
         Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         position.z = -1;
@@ -108,7 +136,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     /// <param name="eventData"></param>
     public void OnEndDrag(PointerEventData eventData) {
         #if DEBUG_ItemSlot
-        log.Log("OnEndDrag.");
+        Debug.Log("OnEndDrag.");
         #endif
         Destroy(itemBeingDragged); //TODO change to a pool of objects
         itemBeingDragged = null;
@@ -126,31 +154,34 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     private void OnEndDragSlot(Vector3 position) {
         //put the item and substract the counter
         if (unlocked && AllowedPlacement(position)) {
-
             GameObject itemObject = GameObject.Instantiate(item.ItemToClone);
             itemObject.transform.position = position;
             GameControllerTemporal.AddTemporal(itemObject);
         }
     }
-
-    //TODO not working
+    
     /// <summary>
     /// Tell if the object is allowed to be in the given position
     /// </summary>
     /// <param name="position">position to test</param>
     /// <returns>True if the object is allowed to be in the given position</returns>
     private bool AllowedPlacement(Vector3 position) {
-        //Collider[] colliders = Physics.OverlapSphere(position, 1, layerCollision);
-        //Debug.Log(colliders.Length);
-        //return colliders.Length > 0;
+        List<Collider> colliders = new List<Collider>();
+        overlapItem.OverlapColliders(position, colliders, layerCollision);
+        bool result = (colliders.Count <= 0);
+        if (result) {
+            overlapItem.OverlapCollidersExtended(position, colliders, layerCollisionExtended);
+            result = colliders.Count <= 0;
+        }
+        
         #if DEBUG_ItemSlot
-        //if (result) {
-        //    log.Log("Item placement allowed.");
-        //} else {
-        //    log.Log("Item placement not allowed.");
-        //}
+        if (result) {
+            Debug.Log("Item placement allowed.");
+        } else {
+            Debug.Log("Item placement not allowed.");
+        }
         #endif
-        return true;
+        return result;
     }
     
 }

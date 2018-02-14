@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4791378404945856}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CharcoVeneno
   m_TagString: Untagged
   m_Icon: {fileID: 0}

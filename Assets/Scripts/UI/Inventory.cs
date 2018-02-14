@@ -3,10 +3,6 @@
 using UnityEngine;
 
 public class Inventory : MonoBehaviour {
-#if DEBUG_Inventory
-    private static DebugLog log = new DebugLog("Inventory"); 
-#endif
-
     public GameObject[] itemsInventory;
 
     public GameObject slotPrefab;

@@ -285,6 +285,10 @@ Prefab:
       propertyPath: life
       value: 50000
       objectReference: {fileID: 0}
+    - target: {fileID: 1373157347986412, guid: a2635ec3970c4e145ab22295f45ab88d, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114480181425305774, guid: a2635ec3970c4e145ab22295f45ab88d, type: 2}
     - {fileID: 114924214397593632, guid: a2635ec3970c4e145ab22295f45ab88d, type: 2}

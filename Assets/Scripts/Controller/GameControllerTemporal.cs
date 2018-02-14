@@ -8,9 +8,6 @@ using UnityEngine;
 /// object (like particle systems).
 /// </summary>
 public class GameControllerTemporal : MonoBehaviour {
-#if DEBUG_GameControllerTemporal
-    private static DebugLog log = new DebugLog("GameControllerTemporal");
-#endif
 
     /// <summary>
     /// The name of the temporal parent. If this object doesn't exist,
@@ -27,7 +24,7 @@ public class GameControllerTemporal : MonoBehaviour {
         // Creates the temporal parent
         CreateTemporalParent();
 #if DEBUG_GameControllerTemporal
-        log.Log("Temporal folder generated.");
+        Debug.Log("Temporal folder generated.");
 #endif
     }
 
@@ -53,7 +50,7 @@ public class GameControllerTemporal : MonoBehaviour {
     /// <param name="temporalObject">The temporal object to register</param>
     public static void AddTemporal(Transform temporalObject) {
 #if DEBUG_GameControllerTemporal
-        log.Log("Temporal object added.");
+        Debug.Log("Temporal object added.");
 #endif
         temporalObject.parent = temporalParent;
     }

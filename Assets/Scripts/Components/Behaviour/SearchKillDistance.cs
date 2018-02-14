@@ -1,4 +1,4 @@
-﻿#define DEBUG_SearchKillDistance
+﻿//#define DEBUG_SearchKillDistance
 
 using UnityEngine;
 
@@ -8,9 +8,6 @@ using UnityEngine;
 /// Will look for the nearest target
 /// </summary>
 public class SearchKillDistance : MonoBehaviour {
-#if DEBUG_SearchKillDistance
-    private static DebugLog log = new DebugLog("SearchKillDistance");
-#endif
 
     /// <summary>
     /// At what distance it start shooting
@@ -87,7 +84,7 @@ public class SearchKillDistance : MonoBehaviour {
 
             if (timerCadence < 0) {
                 #if DEBUG_SearchKillDistance
-                log.Log("Timer cadence over.");
+                Debug.Log("Timer cadence over.");
                 #endif
                 //check the same target again to see if still close
                 if (CheckDistanceShoot()) {
@@ -121,7 +118,7 @@ public class SearchKillDistance : MonoBehaviour {
         //if found a target, set it and watch its life (if someone else kill it)
         if (targetSelected == null || targetSelected != target) {
             #if DEBUG_SearchKillDistance
-            log.Log("Target selected.");
+            Debug.Log("Target selected.");
             #endif
 
             targetSelected = target;
@@ -145,7 +142,7 @@ public class SearchKillDistance : MonoBehaviour {
         //if near, stop and shoot it
         if (dSqrToTarget <= distanceToShoot * distanceToShoot) {
             #if DEBUG_SearchKillDistance
-            log.Log("Target close, shooting it.");
+            Debug.Log("Target close, shooting it.");
             #endif
 
             moveComponent.StopMovement();
@@ -192,7 +189,7 @@ public class SearchKillDistance : MonoBehaviour {
     private void OnTargetDeath() {
         if (targetSelected != null) {
             #if DEBUG_SearchKillDistance
-            log.Log("Target is dead.");
+            Debug.Log("Target is dead.");
             #endif
 
             targetSelected.GetComponent<LifeComponent>().UnregisterOnDeath(OnTargetDeath);

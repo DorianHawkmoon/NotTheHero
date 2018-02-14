@@ -3,9 +3,6 @@
 using UnityEngine;
 
 public class LookingComponent : MonoBehaviour {
-#if DEBUG_LookingComponent
-    private static DebugLog log = new DebugLog("LookingComponent");
-#endif
 
     /// <summary>
     /// The direction is looking for
@@ -30,12 +27,12 @@ public class LookingComponent : MonoBehaviour {
 
         #if DEBUG_LookingComponent
         else {
-            log.Log("No target component.");
+            Debug.Log("No target component.");
         }
         if (animator == null) {
-            log.Log("No animator component.");
+            Debug.Log("No animator component.");
         }
-        log.Log("Looking component initialized.");
+        Debug.Log("Looking component initialized.");
         #endif
     }
 
@@ -45,7 +42,7 @@ public class LookingComponent : MonoBehaviour {
     /// <param name="direction">direction it should look</param>
     public void Look(Vector3 direction) {
         #if DEBUG_LookingComponent
-        log.Log("Look.");
+        Debug.Log("Look.");
         #endif
         Animations(direction);
     }
@@ -55,7 +52,7 @@ public class LookingComponent : MonoBehaviour {
     /// </summary>
     private void OnTargetChanged() {
         #if DEBUG_LookingComponent
-        log.Log("Target changed.");
+        Debug.Log("Target changed.");
         #endif
         Vector3 destiny = target.GetLastTargetPosition();
         Animations(destiny);

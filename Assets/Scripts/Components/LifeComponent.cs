@@ -7,9 +7,7 @@ using UnityEngine;
 /// Class for the life of characters or items
 /// </summary>
 public class LifeComponent : MonoBehaviour {
-#if DEBUG_LifeComponent
-    private static DebugLog log = new DebugLog("LifeComponent");
-#endif
+
     /// <summary>
     /// Life of the entity
     /// </summary>
@@ -38,7 +36,7 @@ public class LifeComponent : MonoBehaviour {
     /// <param name="damage"></param>
     public void Damage(int damage) {
         #if DEBUG_LifeComponent
-        log.Log("Damage: " + damage + ".");
+        Debug.Log("Damage: " + damage + ".");
         #endif
 
         life -= damage;
@@ -69,7 +67,7 @@ public class LifeComponent : MonoBehaviour {
     /// </summary>
     private void Die() {
         #if DEBUG_LifeComponent
-        log.Log("Die.");
+        Debug.Log("Die.");
         #endif
         //TODO
         //init animation Die
@@ -89,7 +87,7 @@ public class LifeComponent : MonoBehaviour {
     /// <param name="callback"></param>
     public void RegisterOnDeath(Action callback) {
         #if DEBUG_LifeComponent
-        log.Log("Register on death.");
+        Debug.Log("Register on death.");
         #endif
         onDeath += callback;
     }
@@ -100,7 +98,7 @@ public class LifeComponent : MonoBehaviour {
     /// <param name="callback"></param>
     public void UnregisterOnDeath(Action callback) {
         #if DEBUG_LifeComponent
-        log.Log("Unregister on death.");
+        Debug.Log("Unregister on death.");
         #endif
         onDeath -= callback;
     }
@@ -111,7 +109,7 @@ public class LifeComponent : MonoBehaviour {
     /// <param name="callback"></param>
     public void RegisterOnLifeChange(Action<int> callback) {
         #if DEBUG_LifeComponent
-        log.Log("Register on life change.");
+        Debug.Log("Register on life change.");
         #endif
         onLifeChange += callback;
     }
@@ -122,7 +120,7 @@ public class LifeComponent : MonoBehaviour {
     /// <param name="callback"></param>
     public void UnregisterOnLifeChange(Action<int> callback) {
         #if DEBUG_LifeComponent
-        log.Log("Unregister on life change.");
+        Debug.Log("Unregister on life change.");
         #endif
         onLifeChange -= callback;
     }

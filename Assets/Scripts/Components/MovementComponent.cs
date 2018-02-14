@@ -4,9 +4,6 @@ using System.Collections;
 using UnityEngine;
 
 public class MovementComponent : MonoBehaviour {
-#if DEBUG_MovementComponent
-    private static DebugLog log = new DebugLog("MovementComponent");
-#endif
 
     /// <summary>
     /// Velocity of the game object
@@ -92,7 +89,7 @@ public class MovementComponent : MonoBehaviour {
     /// </summary>
     private void OnChangedPath() {
         #if DEBUG_MovementComponent
-        log.Log("Changed path.");
+        Debug.Log("Changed path.");
         #endif
         //get new path
         path = pathFinder.GetPath();
@@ -103,7 +100,7 @@ public class MovementComponent : MonoBehaviour {
 
         }else if (path == null) {
             #if DEBUG_MovementComponent
-            log.Log("There is no more path.");
+            Debug.Log("There is no more path.");
             #endif
             StopCoroutine("FollowPath");
             CleanPath();

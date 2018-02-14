@@ -9,9 +9,6 @@ using UnityEngine;
 /// Script for any kind of projectile who do damage on collision
 /// </summary>
 public class ProjectileComponent : MonoBehaviour {
-#if DEBUG_ProjectileComponent
-    private static DebugLog log = new DebugLog("ProjectileComponent");
-#endif
 
     /// <summary>
     /// Quantity of damage it could do
@@ -53,7 +50,7 @@ public class ProjectileComponent : MonoBehaviour {
     /// <param name="value">Direction to face</param>
     public void SetDirection(Vector3 value) {
         #if DEBUG_ProjectileComponent
-        log.Log("Setted direction: "+value+".");
+        Debug.Log("Setted direction: "+value+".");
         #endif
         direction = value;
         Vector3 destiny = transform.position + direction;
@@ -94,17 +91,17 @@ public class ProjectileComponent : MonoBehaviour {
     virtual public void OnTriggerEnter(Collider other) {
         if (other.tag == "Hero") { //TODO improve tag to use
             #if DEBUG_ProjectileComponent
-            log.Log("Collision.");
+            Debug.Log("Collision.");
             #endif
 
             if (animations != null) {
                 #if DEBUG_ProjectileComponent
-                log.Log("Explosion animation.");
+                Debug.Log("Explosion animation.");
                 #endif
                 animations.SetTrigger("Explosion");
             } else {
                 #if DEBUG_ProjectileComponent
-                log.Log("No animation, destroying.");
+                Debug.Log("No animation, destroying.");
                 #endif
                 //destroy the object
                 Destroy(gameObject);
@@ -114,7 +111,7 @@ public class ProjectileComponent : MonoBehaviour {
             LifeComponent life = other.gameObject.GetComponent<LifeComponent>();
             if (life != null) {
                 #if DEBUG_ProjectileComponent
-                log.Log("Doing damage.");
+                Debug.Log("Doing damage.");
                 #endif
                 life.Damage(damage);
             }
@@ -126,7 +123,7 @@ public class ProjectileComponent : MonoBehaviour {
     /// </summary>
     public void OnExplosion() {
         #if DEBUG_ProjectileComponent
-        log.Log("Destroying in 2 seconds.");
+        Debug.Log("Destroying in 2 seconds.");
         #endif
         Destroy(transform.parent.gameObject, 2);
     }

@@ -9,9 +9,6 @@ using UnityEngine;
 /// TODO damage function can be virtual so inheritance can be specific mine field for other effects instead of just damage
 /// </summary>
 public class Bomb : MonoBehaviour {
-#if DEBUG_Bomb
-    private static DebugLog log = new DebugLog("Bomb");
-#endif
 
     /// <summary>
     /// Timelife of bomb
@@ -72,7 +69,7 @@ public class Bomb : MonoBehaviour {
         timer -= Time.deltaTime;
         if (timer < 0) {
             #if DEBUG_Bomb
-            log.Log("Bomb timer end and explode.");
+            Debug.Log("Bomb timer end and explode.");
             #endif
             Explode();
         }

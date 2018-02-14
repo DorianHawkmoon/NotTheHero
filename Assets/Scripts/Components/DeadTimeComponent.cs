@@ -4,9 +4,7 @@ using System;
 using UnityEngine;
 
 public class DeadTimeComponent : MonoBehaviour {
-#if DEBUG_DeadTimeComponent
-    private static DebugLog log = new DebugLog("DeadTimeComponent");
-#endif
+
 
     /// <summary>
     /// Timelife for the object
@@ -42,7 +40,7 @@ public class DeadTimeComponent : MonoBehaviour {
     /// </summary>
     public void StartTimer() {
         #if DEBUG_DeadTimeComponent
-        log.Log("Timer started.");
+        Debug.Log("Timer started.");
         #endif
         timer = time;
         started = true;
@@ -65,7 +63,7 @@ public class DeadTimeComponent : MonoBehaviour {
         timer -= Time.deltaTime;
         if (timer < 0 ) {
             #if DEBUG_DeadTimeComponent
-            log.Log("Time is over.");
+            Debug.Log("Time is over.");
             #endif
             if (onEndTime != null) {
                 onEndTime();
@@ -77,14 +75,14 @@ public class DeadTimeComponent : MonoBehaviour {
 
     public void RegisterEndTime(Action callback) {
         #if DEBUG_DeadTimeComponent
-        log.Log("Registered suscriber for end time.");
+        Debug.Log("Registered suscriber for end time.");
         #endif
         onEndTime += callback;
     }
 
     public void UnregisterOnEndTime(Action callback) {
         #if DEBUG_DeadTimeComponent
-        log.Log("Unregistered suscriber for end time.");
+        Debug.Log("Unregistered suscriber for end time.");
         #endif
         onEndTime -= callback;
     }

@@ -6,9 +6,6 @@ using UnityEngine;
 /// A launcher which creates the projectile and launch them
 /// </summary>
 public class LauncherProjectileComponent : MonoBehaviour {
-#if DEBUG_LauncherProjectileComponent
-    private static DebugLog log = new DebugLog("LauncherProjectileComponent");
-#endif
 
     /// <summary>
     /// The proyectile to launch
@@ -44,7 +41,7 @@ public class LauncherProjectileComponent : MonoBehaviour {
         if (prefabProjectile == null) return;
 
         #if DEBUG_LauncherProjectileComponent
-        log.Log("Create and launched a projectile with custom velocity: "+useCustomVelocity+".");
+        Debug.Log("Create and launched a projectile with custom velocity: "+useCustomVelocity+".");
         #endif
 
         //create the proyectile

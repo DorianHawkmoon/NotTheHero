@@ -6,10 +6,6 @@ using UnityEngine;
 /// Class for a game object which will look for any target inside an area and shoot it
 /// </summary>
 public class KillDistance : MonoBehaviour {
-#if DEBUG_KillDistance
-    private static DebugLog log = new DebugLog("KillDistance");
-#endif
-
 
     /// <summary>
     /// At what distance it start shooting
@@ -121,7 +117,7 @@ public class KillDistance : MonoBehaviour {
 
             if (timerCadence < 0) {
                 #if DEBUG_KillDistance
-                log.Log("Timer cadence over.");
+                Debug.Log("Timer cadence over.");
                 #endif
                 //check the same target again to see if still close
                 if (CheckDistanceShoot()) {
@@ -150,7 +146,7 @@ public class KillDistance : MonoBehaviour {
 
         if (targetSelected == null || targetSelected != target) {
             #if DEBUG_KillDistance
-            log.Log("Target selected.");
+            Debug.Log("Target selected.");
             #endif
             targetSelected = target;
             targetComponent.SetTargetObject(targetSelected);
@@ -170,7 +166,7 @@ public class KillDistance : MonoBehaviour {
         Transform potentialTarget = targetSelected.transform;
         Vector3 directionToTarget = potentialTarget.position - transform.position;
         #if DEBUG_KillDistance
-            log.Log("Target close, shooting it.");
+            Debug.Log("Target close, shooting it.");
         #endif
         launcherComponent.Launch(directionToTarget);
         result = true;

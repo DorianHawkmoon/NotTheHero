@@ -6,10 +6,6 @@ using UnityEngine;
 /// Class to define an item in game menu inventory
 /// </summary>
 public class Item : MonoBehaviour {
-#if DEBUG_Item
-    private static DebugLog log = new DebugLog("Item");
-#endif
-
     /// <summary>
     /// Sprite for using in menu
     /// </summary>
@@ -25,10 +21,11 @@ public class Item : MonoBehaviour {
     /// </summary>
     [SerializeField]
     private GameObject itemToClone;
+    
 
     public Item(GameObject item, Sprite itemMenu, Sprite itemImage) {
 #if DEBUG_Item
-        log.Log("Item created.");
+        Debug.Log("Item created.");
 #endif
         itemToClone = item;
         spriteItem = itemImage;
@@ -39,7 +36,7 @@ public class Item : MonoBehaviour {
     /// The item to be clone and put into game
     /// </summary>
     public GameObject ItemToClone {
-        get { return ItemToClone; }
+        get { return itemToClone; }
     }
 
     /// <summary>
