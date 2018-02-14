@@ -479,6 +479,10 @@ Prefab:
       propertyPath: maxTimeRandomLook
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1804256048086248, guid: faa620ff37910c945961306fcd8bda94, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: faa620ff37910c945961306fcd8bda94, type: 2}
   m_IsPrefabParent: 0
@@ -1045,11 +1049,30 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1123c794c05b2774d84004f309fc5264, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &956303806 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1325365475813950, guid: de1453df849f8fd46abf8dabce3bf59d,
+    type: 2}
+  m_PrefabInternal: {fileID: 161531328}
 --- !u!4 &956303813 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4275281496603602, guid: de1453df849f8fd46abf8dabce3bf59d,
     type: 2}
   m_PrefabInternal: {fileID: 161531328}
+--- !u!114 &956303814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 956303806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c663d00e841d49830aca59e0e3706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToShoot: 0.1
+  cadence: 1
+  tagTarget: Player
 --- !u!4 &1120911922 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4661003969926250, guid: faa620ff37910c945961306fcd8bda94,
