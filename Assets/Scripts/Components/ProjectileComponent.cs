@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-//TODO improve: made this a vase class of projectile and inherit for diferent kind of projetiles
+//TODO improve: made this a base class of projectile and inherit for diferent kind of projetiles
 //one for doing just damage, others for doing confusion and so on...
 
 /// <summary>

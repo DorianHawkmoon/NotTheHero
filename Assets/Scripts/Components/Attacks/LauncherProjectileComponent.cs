@@ -1,4 +1,4 @@
-﻿//#define DEBUG_LauncherProjectileComponent
+﻿#define DEBUG_LauncherProjectileComponent
 
 using UnityEngine;
 
@@ -34,12 +34,25 @@ public class LauncherProjectileComponent : AttackComponent {
     private float customVelocityProjectile=0;
 
     /// <summary>
+    /// Direction for the projectile
+    /// </summary>
+    private Vector3 direction;
+
+    /// <summary>
     /// Create and launch the projectile
     /// </summary>
     /// <param name="direction"></param>
     public override void Attack(Vector3 direction) {
         if (prefabProjectile == null) return;
+        this.direction = direction;
 
+        #if DEBUG_LauncherProjectileComponent
+        Debug.Log("Triggering animation.");
+        #endif
+        AttackAnimation();
+    }
+
+    public void LaunchProjectileAnimation() {
         #if DEBUG_LauncherProjectileComponent
         Debug.Log("Create and launched a projectile with custom velocity: "+useCustomVelocity+".");
         #endif
@@ -47,15 +60,13 @@ public class LauncherProjectileComponent : AttackComponent {
         //create the proyectile
         GameObject projectile = Instantiate(prefabProjectile);
         projectile.transform.position = transform.position + offsetLauncher;
-        ProjectileComponent projectileCmp= projectile.GetComponentInChildren<ProjectileComponent>();
+        ProjectileComponent projectileCmp = projectile.GetComponentInChildren<ProjectileComponent>();
         projectileCmp.SetDirection(direction);
         projectileCmp.LayerCollision = layerCollision;
         if (useCustomVelocity) {
-            projectileCmp.Velocity=customVelocityProjectile;
+            projectileCmp.Velocity = customVelocityProjectile;
         }
         //get proyectile component and set direction
         GameControllerTemporal.AddTemporal(projectile);
-
-        AttackAnimation();
     }
 }

@@ -1,4 +1,4 @@
-﻿#define DEBUG_CloseAttackComponent
+﻿//#define DEBUG_CloseAttackComponent
 
 using System.Collections.Generic;
 using UnityEngine;
