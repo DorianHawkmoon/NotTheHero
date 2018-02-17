@@ -44,7 +44,7 @@ public class SearchKillDistance : MonoBehaviour {
     /// </summary>
     private TargetComponent targetComponent;
     private MovementComponent moveComponent;
-    private LauncherProjectileComponent launcherComponent;
+    private AttackComponent launcherComponent;
 
     /// <summary>
     /// Get needed components
@@ -53,7 +53,7 @@ public class SearchKillDistance : MonoBehaviour {
         targetSelected = null;
         targetComponent = GetComponent<TargetComponent>();
         moveComponent = GetComponent<MovementComponent>();
-        launcherComponent = GetComponent<LauncherProjectileComponent>();
+        launcherComponent = GetComponent<AttackComponent>();
     }
 
     /// <summary>
@@ -146,7 +146,7 @@ public class SearchKillDistance : MonoBehaviour {
             #endif
 
             moveComponent.StopMovement();
-            launcherComponent.Launch(directionToTarget);
+            launcherComponent.Attack(directionToTarget);
             result = true;
             //start cadence count
             inCadence = true;

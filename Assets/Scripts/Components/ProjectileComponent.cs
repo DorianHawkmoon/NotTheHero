@@ -43,6 +43,18 @@ public class ProjectileComponent : MonoBehaviour {
     /// animator of projectile
     /// </summary>
     private Animator animations;
+
+    /// <summary>
+    /// Layers of collision it will take care of
+    /// </summary>
+    private int layerCollision;
+
+    /// <summary>
+    /// Set the layer collisions
+    /// </summary>
+    public int LayerCollision {
+        set { layerCollision = value; }
+    }
     
     /// <summary>
     /// Set the direction of the projectile so it rotate as needed to face the direction
@@ -89,7 +101,8 @@ public class ProjectileComponent : MonoBehaviour {
     /// </summary>
     /// <param name="other">collider</param>
     virtual public void OnTriggerEnter(Collider other) {
-        if (other.tag == "Hero") { //TODO improve tag to use
+        int bitmask = (1 << other.gameObject.layer);
+        if ((bitmask & layerCollision) > 0) {
             #if DEBUG_ProjectileComponent
             Debug.Log("Collision.");
             #endif

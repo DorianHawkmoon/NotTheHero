@@ -1,4 +1,4 @@
-﻿#define DEBUG_KillDistance
+﻿//#define DEBUG_KillDistance
 
 using UnityEngine;
 
@@ -62,7 +62,7 @@ public class KillDistance : MonoBehaviour {
     /// Needed component to set the target and shoot
     /// </summary>
     private TargetComponent targetComponent;
-    private LauncherProjectileComponent launcherComponent;
+    private AttackComponent attackComponent;
     private LookingComponent lookingComponent;
 
     /// <summary>
@@ -74,7 +74,7 @@ public class KillDistance : MonoBehaviour {
         targetSelected = null;
         timerRandomLooking = Random.Range(minTimeRandomLook, maxTimeRandomLook);
         targetComponent = GetComponent<TargetComponent>();
-        launcherComponent = GetComponent<LauncherProjectileComponent>();
+        attackComponent = GetComponent<LauncherProjectileComponent>();
         lookingComponent = GetComponent<LookingComponent>();
 
         targetComponent.RegisterOnTargetMove(OnTargetMoved);
@@ -168,7 +168,7 @@ public class KillDistance : MonoBehaviour {
         #if DEBUG_KillDistance
             Debug.Log("Target close, shooting it.");
         #endif
-        launcherComponent.Launch(directionToTarget);
+        attackComponent.Attack(directionToTarget);
         result = true;
         //start cadence count
         inCadence = true;

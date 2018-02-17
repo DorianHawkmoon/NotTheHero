@@ -28,7 +28,7 @@ public class MovementComponent : MonoBehaviour {
     /// <summary>
     /// Are we moving? used to tell the animator
     /// </summary>
-    private bool moving; //TODO check if needed, posible bug if we stop movement, but the variable still on true (bad animation then)
+    private bool moving=false; //TODO check if needed, posible bug if we stop movement, but the variable still on true (bad animation then)
 
     /// <summary>
     /// Components needed

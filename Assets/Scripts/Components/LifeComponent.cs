@@ -2,11 +2,12 @@
 
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
 /// Class for the life of characters or items
 /// </summary>
-public class LifeComponent : MonoBehaviour {
+public class LifeComponent : MonoBehaviour, IEqualityComparer<LifeComponent> {
 
     /// <summary>
     /// Life of the entity
@@ -123,5 +124,13 @@ public class LifeComponent : MonoBehaviour {
         Debug.Log("Unregister on life change.");
         #endif
         onLifeChange -= callback;
+    }
+
+    bool IEqualityComparer<LifeComponent>.Equals(LifeComponent x, LifeComponent y) {
+        return x.gameObject == y.gameObject;
+    }
+
+    int IEqualityComparer<LifeComponent>.GetHashCode(LifeComponent obj) {
+        return obj.gameObject.GetHashCode();
     }
 }

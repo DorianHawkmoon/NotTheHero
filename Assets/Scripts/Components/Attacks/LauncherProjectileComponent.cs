@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// A launcher which creates the projectile and launch them
 /// </summary>
-public class LauncherProjectileComponent : MonoBehaviour {
+public class LauncherProjectileComponent : AttackComponent {
 
     /// <summary>
     /// The proyectile to launch
@@ -37,7 +37,7 @@ public class LauncherProjectileComponent : MonoBehaviour {
     /// Create and launch the projectile
     /// </summary>
     /// <param name="direction"></param>
-    public void Launch(Vector3 direction) {
+    public override void Attack(Vector3 direction) {
         if (prefabProjectile == null) return;
 
         #if DEBUG_LauncherProjectileComponent
@@ -49,10 +49,13 @@ public class LauncherProjectileComponent : MonoBehaviour {
         projectile.transform.position = transform.position + offsetLauncher;
         ProjectileComponent projectileCmp= projectile.GetComponentInChildren<ProjectileComponent>();
         projectileCmp.SetDirection(direction);
+        projectileCmp.LayerCollision = layerCollision;
         if (useCustomVelocity) {
             projectileCmp.Velocity=customVelocityProjectile;
         }
         //get proyectile component and set direction
         GameControllerTemporal.AddTemporal(projectile);
+
+        AttackAnimation();
     }
 }

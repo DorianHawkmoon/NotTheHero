@@ -187,6 +187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57aec2a2c2c7924786b94f6a391ee6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerColliders:
+  - serializedVersion: 2
+    m_Bits: 1024
   prefabProjectile: {fileID: 1232782913589866, guid: b1dddca0bb138bb4f880124e3307912a,
     type: 2}
   offsetLauncher: {x: 0, y: 0, z: 0}
