@@ -200,6 +200,7 @@ MonoBehaviour:
   layerColliders:
   - serializedVersion: 2
     m_Bits: 1024
+  launchOnEventAnimation: 0
   prefabProjectile: {fileID: 1360845626205958, guid: 81253ce2bba77ac46a68424b68a7b7d9,
     type: 2}
   offsetLauncher: {x: 0, y: 0, z: 0}
@@ -279,7 +280,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300040, guid: 0debad0b63af8491598a42462304647b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -323,7 +324,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300004, guid: 0debad0b63af8491598a42462304647b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

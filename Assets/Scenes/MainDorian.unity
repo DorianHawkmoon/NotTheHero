@@ -520,7 +520,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1804256048086248, guid: faa620ff37910c945961306fcd8bda94, type: 2}
       propertyPath: m_TagString
-      value: Tower Player
+      value: Player Character
       objectReference: {fileID: 0}
     - target: {fileID: 114682800476480820, guid: faa620ff37910c945961306fcd8bda94,
         type: 2}
@@ -1583,11 +1583,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1373157347986412, guid: a2635ec3970c4e145ab22295f45ab88d, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1373157347986412, guid: a2635ec3970c4e145ab22295f45ab88d, type: 2}
       propertyPath: m_TagString
       value: Player Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 114634518749759788, guid: a2635ec3970c4e145ab22295f45ab88d,
+        type: 2}
+      propertyPath: launchOnEventAnimation
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2635ec3970c4e145ab22295f45ab88d, type: 2}

@@ -1,4 +1,4 @@
-﻿#define DEBUG_LauncherProjectileComponent
+﻿//#define DEBUG_LauncherProjectileComponent
 
 using UnityEngine;
 
@@ -6,7 +6,10 @@ using UnityEngine;
 /// A launcher which creates the projectile and launch them
 /// </summary>
 public class LauncherProjectileComponent : AttackComponent {
-
+    /// <summary>
+    /// Use the animation event to sync the launch of the projectile
+    /// </summary>
+    public bool launchOnEventAnimation=true;
     /// <summary>
     /// The proyectile to launch
     /// </summary>
@@ -50,12 +53,24 @@ public class LauncherProjectileComponent : AttackComponent {
         Debug.Log("Triggering animation.");
         #endif
         AttackAnimation();
+        if (!launchOnEventAnimation) {
+            Launch();
+        }
     }
 
     public void LaunchProjectileAnimation() {
-        #if DEBUG_LauncherProjectileComponent
-        Debug.Log("Create and launched a projectile with custom velocity: "+useCustomVelocity+".");
-        #endif
+#if DEBUG_LauncherProjectileComponent
+        Debug.Log("Animation event triggered.");
+#endif        
+        if (launchOnEventAnimation) {
+            Launch();
+        }
+    }
+
+    private void Launch() {
+#if DEBUG_LauncherProjectileComponent
+        Debug.Log("Create and launched a projectile with custom velocity: " + useCustomVelocity + ".");
+#endif
 
         //create the proyectile
         GameObject projectile = Instantiate(prefabProjectile);

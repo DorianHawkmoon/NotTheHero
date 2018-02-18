@@ -1,4 +1,4 @@
-﻿#define DEBUG_HeroBehaviour
+﻿//#define DEBUG_HeroBehaviour
 
 using UnityEngine;
 
