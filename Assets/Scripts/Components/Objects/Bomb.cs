@@ -41,15 +41,27 @@ public class Bomb : MonoBehaviour {
     private float scaleExplosion = 1;
 
     /// <summary>
+    /// Layer collisions
+    /// </summary>
+    [SerializeField]
+    private LayerMask[] layerCollisions;
+
+    /// <summary>
     /// Timer for the timelife of bomb
     /// </summary>
     private float timer;
+
+    /// <summary>
+    /// The layers it can hurt
+    /// </summary>
+    private int layerCollider;
 
     /// <summary>
     /// Set the timer and get the animator if exists
     /// </summary>
     public void Start() {
         timer = time;
+        layerCollider = Utils.ToLayer(layerCollisions);
 
         Animator anim = GetComponent<Animator>();
         if (anim != null) {
@@ -68,9 +80,9 @@ public class Bomb : MonoBehaviour {
     public void Update() {
         timer -= Time.deltaTime;
         if (timer < 0) {
-            #if DEBUG_Bomb
+#if DEBUG_Bomb
             Debug.Log("Bomb timer end and explode.");
-            #endif
+#endif
             Explode();
         }
     }
@@ -97,13 +109,10 @@ public class Bomb : MonoBehaviour {
     /// Do the damage
     /// </summary>
     private void Damage() {
-        Collider[] list = Physics.OverlapSphere(transform.position, radiusExplosion);
-
+        Collider[] list = Physics.OverlapSphere(transform.position, radiusExplosion, layerCollider);
         foreach (Collider collider in list) {
             GameObject gameObject = collider.gameObject;
-            if (gameObject.tag == "Hero") { //TODO improve use of tags
-                gameObject.GetComponent<LifeComponent>().Damage(damage);
-            }
+            gameObject.GetComponent<LifeComponent>().Damage(damage);
         }
 
     }

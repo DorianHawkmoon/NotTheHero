@@ -1,4 +1,4 @@
-﻿//#define DEBUG_MovementComponent
+﻿#define DEBUG_MovementComponent
 
 using System.Collections;
 using UnityEngine;

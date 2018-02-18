@@ -135,6 +135,8 @@ public class GridLevel  : MonoBehaviour {
         if (grid != null && showGrid) {
             foreach (Node node in grid) {
                 Gizmos.color = (node.walkable) ? Color.white : Color.red;
+                Vector3 position = node.worldPosition;
+                position.z = 5;
                 Gizmos.DrawCube(node.worldPosition, Vector3.one * (nodeDiameter - 0.05f));
             }
         }

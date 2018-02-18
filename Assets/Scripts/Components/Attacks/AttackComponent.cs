@@ -15,12 +15,7 @@ public abstract class AttackComponent : MonoBehaviour {
     protected int layerCollision;
 
     public virtual void Start() {
-        layerCollision = 0;
-        for (int i = 0; i < layerColliders.Length; ++i) {
-            int layer = Utils.ToLayer(layerColliders[i]);
-            layerCollision |= (1 << layer);
-        }
-
+        layerCollision = Utils.ToLayer(layerColliders);
         animator = GetComponent<Animator>();
     }
 

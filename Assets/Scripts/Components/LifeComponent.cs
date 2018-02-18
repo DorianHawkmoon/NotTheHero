@@ -13,29 +13,29 @@ public class LifeComponent : MonoBehaviour, IEqualityComparer<LifeComponent> {
     /// Life of the entity
     /// </summary>
     [SerializeField]
-    private int life;
+    protected int life;
 
     /// <summary>
     /// Has died?
     /// </summary>
-    private bool died = false;
+    protected bool died = false;
 
     /// <summary>
     /// Suscriptor for death
     /// </summary>
-    private Action onDeath;
+    protected Action onDeath;
 
     /// <summary>
     /// Suscriptor for changes in life
     /// </summary>
-    private Action<int> onLifeChange;
+    protected Action<int> onLifeChange;
 
     /// <summary>
     /// Made damage (or health)
     /// Negative amounts health life
     /// </summary>
     /// <param name="damage"></param>
-    public void Damage(int damage) {
+    public virtual void Damage(int damage) {
         #if DEBUG_LifeComponent
         Debug.Log("Damage: " + damage + ".");
         #endif
@@ -59,14 +59,14 @@ public class LifeComponent : MonoBehaviour, IEqualityComparer<LifeComponent> {
     /// Is dead the character/item?
     /// </summary>
     /// <returns>true if it's dead</returns>
-    public bool IsDead() {
+    public virtual bool IsDead() {
         return died;
     }
 
     /// <summary>
     /// When the character dies, init an animation and remove the object
     /// </summary>
-    private void Die() {
+    protected virtual void Die() {
         #if DEBUG_LifeComponent
         Debug.Log("Die.");
         #endif

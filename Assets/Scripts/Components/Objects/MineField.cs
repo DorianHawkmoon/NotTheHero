@@ -46,6 +46,18 @@ public class MineField : MonoBehaviour {
     private float scaleExplosion = 1;
 
     /// <summary>
+    /// Layer collisions
+    /// </summary>
+    [SerializeField]
+    private LayerMask[] layerCollisions;
+
+    /// <summary>
+    /// Tags to be detected by the mine field
+    /// </summary>
+    [SerializeField]
+    private string[] tagsDetection;
+
+    /// <summary>
     /// Timer for the activation delay
     /// </summary>
     private float timer;
@@ -53,13 +65,19 @@ public class MineField : MonoBehaviour {
     /// <summary>
     /// If the mine is activated
     /// </summary>
-    private bool activated=false;
+    private bool activated = false;
+
+    /// <summary>
+    /// The layers it can hurt
+    /// </summary>
+    private int layerCollider;
 
     /// <summary>
     /// Set the timer of activation
     /// </summary>
     public void Start() {
         timer = timeToActivate;
+        layerCollider = Utils.ToLayer(layerCollisions);
     }
 
     /// <summary>
@@ -73,12 +91,26 @@ public class MineField : MonoBehaviour {
     }
 
     /// <summary>
+    /// Check if the tag is one of the configured tags
+    /// </summary>
+    /// <param name="tag"></param>
+    /// <returns></returns>
+    private bool CheckTag(string tag) {
+        bool result = false;
+        for (int i = 0; i < tagsDetection.Length && !result; ++i) {
+            result = tag.CompareTo(tagsDetection[i]) == 0;
+        }
+        return result;
+    }
+
+
+    /// <summary>
     /// If someone gets inside the trigger of the mine, it explode
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other) {
         if (activated) {
-            if (other.gameObject.tag == "Hero") { //TODO tags
+            if (CheckTag(other.gameObject.tag)) {
                 #if DEBUG_MineField
                 Debug.Log("Mine triggered.");
                 #endif
@@ -109,12 +141,10 @@ public class MineField : MonoBehaviour {
     /// Do the damage
     /// </summary>
     private void Damage() {
-        Collider[] list = Physics.OverlapSphere(transform.position, radiusExplosion);
+        Collider[] list = Physics.OverlapSphere(transform.position, radiusExplosion, layerCollider);
         for (int i = 0; i < list.Length; ++i) {
             GameObject gameObject = list[i].gameObject;
-            if (gameObject.tag == "Hero") { //TODO improve use of tags
-                gameObject.GetComponent<LifeComponent>().Damage(damage);
-            }
+            gameObject.GetComponent<LifeComponent>().Damage(damage);
         }
     }
 

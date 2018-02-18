@@ -55,6 +55,10 @@ public class TargetComponent : MonoBehaviour {
         }
     }
 
+    public GameObject GetTarget() {
+        return targetObject;
+    }
+
     /// <summary>
     /// We are tracking a target
     /// </summary>

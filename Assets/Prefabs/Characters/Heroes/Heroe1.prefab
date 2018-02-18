@@ -42,9 +42,9 @@ GameObject:
   - component: {fileID: 114484004752745782}
   - component: {fileID: 114704515581427702}
   - component: {fileID: 114868352163595756}
-  - component: {fileID: 114202874031768404}
   - component: {fileID: 114865917649652864}
-  - component: {fileID: 114543349997729308}
+  - component: {fileID: 114611020187924370}
+  - component: {fileID: 114764202482376560}
   m_Layer: 10
   m_Name: Heroe1
   m_TagString: Hero
@@ -138,20 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 1
---- !u!114 &114202874031768404
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1325365475813950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c663d00e841d49830aca59e0e3706, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceToShoot: 0.5
-  cadence: 1
-  tagTarget: Player
 --- !u!114 &114412079631234364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -175,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85091b7c0877a3640b54e8c2965fb45e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114543349997729308
+--- !u!114 &114611020187924370
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -183,12 +169,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1325365475813950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c663d00e841d49830aca59e0e3706, type: 3}
+  m_Script: {fileID: 11500000, guid: 473cbe073212be444826385e54569cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToShoot: 0.5
-  cadence: 1.5
-  tagTarget: Player
+  distanceToShoot: 1
+  cadence: 1
 --- !u!114 &114704515581427702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,6 +186,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 100
+--- !u!114 &114764202482376560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1325365475813950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473cbe073212be444826385e54569cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToShoot: 0.5
+  cadence: 1
 --- !u!114 &114865917649652864
 MonoBehaviour:
   m_ObjectHideFlags: 1

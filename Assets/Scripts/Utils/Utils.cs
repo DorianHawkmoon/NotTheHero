@@ -1,4 +1,5 @@
-﻿
+﻿using UnityEngine;
+
 public class Utils  {
 
     /// <summary>
@@ -12,5 +13,14 @@ public class Utils  {
             result++;
         }
         return result;
+    }
+
+    public static int ToLayer(LayerMask[] layers) {
+        int layerCollision = 0;
+        for (int i = 0; i < layers.Length; ++i) {
+            int layer = Utils.ToLayer(layers[i]);
+            layerCollision |= (1 << layer);
+        }
+        return layerCollision;
     }
 }

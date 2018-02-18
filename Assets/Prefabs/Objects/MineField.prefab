@@ -102,6 +102,11 @@ MonoBehaviour:
   explosionPrefab: {fileID: 1533282478315654, guid: c200ccfe4eaaf7c44b168d7826b6526b,
     type: 2}
   scaleExplosion: 1
+  layerCollisions:
+  - serializedVersion: 2
+    m_Bits: 1024
+  tagsDetection:
+  - Hero
 --- !u!135 &135727969874671372
 SphereCollider:
   m_ObjectHideFlags: 1
