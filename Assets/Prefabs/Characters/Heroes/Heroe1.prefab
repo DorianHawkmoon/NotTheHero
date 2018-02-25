@@ -42,8 +42,6 @@ GameObject:
   - component: {fileID: 114484004752745782}
   - component: {fileID: 114704515581427702}
   - component: {fileID: 114868352163595756}
-  - component: {fileID: 114865917649652864}
-  - component: {fileID: 114611020187924370}
   - component: {fileID: 114764202482376560}
   m_Layer: 10
   m_Name: Heroe1
@@ -75,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1325365475813950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -9.04, y: -4.11, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4840428856123710}
@@ -161,19 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85091b7c0877a3640b54e8c2965fb45e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114611020187924370
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1325365475813950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 473cbe073212be444826385e54569cc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceToShoot: 1
-  cadence: 1
 --- !u!114 &114704515581427702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,23 +184,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToShoot: 0.5
   cadence: 1
---- !u!114 &114865917649652864
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1325365475813950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d009f220cdf8d3478df2516fc1e1cf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerColliders:
-  - serializedVersion: 2
-    m_Bits: 512
-  damage: 10
-  radius: 1
-  angleGradeAttack: 90
 --- !u!114 &114868352163595756
 MonoBehaviour:
   m_ObjectHideFlags: 1

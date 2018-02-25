@@ -1,5 +1,4 @@
 ﻿using UnityEditor;
-using UnityEngine;
 
 [CustomEditor(typeof(OverlapItem))]
 [CanEditMultipleObjects]
