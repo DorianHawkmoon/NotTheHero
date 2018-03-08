@@ -68,7 +68,7 @@ public class MineField : MonoBehaviour {
     private bool activated = false;
 
     /// <summary>
-    /// The layers it can hurt
+    /// The layers it can hurt (combine the array of layers)
     /// </summary>
     private int layerCollider;
 

@@ -71,6 +71,7 @@ MonoBehaviour:
   itemsInventory:
   - {fileID: 1195854645041284, guid: d900d6f79bb39944b8aaf3c9da51d788, type: 2}
   - {fileID: 1324230571424164, guid: 400b757dafaf8f846b129c34e6f11b0d, type: 2}
+  - {fileID: 1195854645041284, guid: 5c791bffaa3ebd143971b08aefa4fdb1, type: 2}
   - {fileID: 1630040653210348, guid: dd43fee421f931241a1511d35579c147, type: 2}
   - {fileID: 1712213467518244, guid: 12470d2924de2df409429ae88cd85de7, type: 2}
   slotPrefab: {fileID: 1133372493426210, guid: 1e360ce788fb04b438e15c224a427218, type: 2}
