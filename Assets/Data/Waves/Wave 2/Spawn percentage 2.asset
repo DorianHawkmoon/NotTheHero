@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee272e5385ac3f49b61854ffd1fd9a6, type: 3}
+  m_Name: Spawn percentage 2
+  m_EditorClassIdentifier: 
+  points: {fileID: 11400000, guid: f1260cbe4566fa24f91a776844bdbfc0, type: 2}
+  percentageOfUse:
+  - 15
+  - 30
+  - 15
+  - 20
+  - 20
+  totalPercentage: 100

@@ -83,7 +83,7 @@ public class OverlapItem : MonoBehaviour {
         if (isSphere) {
             colliders.AddRange(Physics.OverlapSphere(position, radius, layerMask));
         } else if (isBox) {
-            colliders.AddRange(Physics.OverlapBox(sizeBox, sizeBox, Quaternion.identity, layerMask));
+            colliders.AddRange(Physics.OverlapBox(position, sizeBox/2, Quaternion.identity, layerMask));   
         }
     }
     /// <summary>
@@ -96,7 +96,7 @@ public class OverlapItem : MonoBehaviour {
         if (isSphere) {
             colliders.AddRange(Physics.OverlapSphere(position, radiusExtended, layerMask));
         } else if (isBox) {
-            colliders.AddRange(Physics.OverlapBox(position, sizeBoxExtended, Quaternion.identity, layerMask));
+            colliders.AddRange(Physics.OverlapBox(position, sizeBoxExtended/2, Quaternion.identity, layerMask));
         }
     }
 

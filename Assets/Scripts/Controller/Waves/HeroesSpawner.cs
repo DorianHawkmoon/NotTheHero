@@ -57,7 +57,7 @@ public class HeroesSpawner : MonoBehaviour {
         //m_MessageText.text = "ROUND " + GameState.Instance.RoundNumber;
 
         // Wait for the specified length of time until yielding control back to the game loop.
-        yield return timeCountdownStart;
+        yield return new WaitForSeconds(timeCountdownStart);
     }
 
 
@@ -92,6 +92,6 @@ public class HeroesSpawner : MonoBehaviour {
         //m_MessageText.text = message;
 
         // Wait for the specified length of time until yielding control back to the game loop.
-        yield return timeBetweenWages;
+        yield return new WaitForSeconds(timeBetweenWages);
     }
 }

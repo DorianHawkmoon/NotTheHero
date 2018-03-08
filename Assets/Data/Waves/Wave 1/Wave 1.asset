@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Wave 1
   m_EditorClassIdentifier: 
   spawnPoints: {fileID: 11400000, guid: f1260cbe4566fa24f91a776844bdbfc0, type: 2}
-  spawnData: {fileID: 11400000, guid: 7559d61f86f1dd643bc8b90033a46981, type: 2}
+  spawnData: {fileID: 11400000, guid: 3281c62eba4940c42b6781f14fb54892, type: 2}
   behaviourData: {fileID: 11400000, guid: 257c60424bae5dc4daaca55c84d6c67b, type: 2}
   waveEvents: []

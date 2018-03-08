@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "Random Wave", menuName = "Waves/Behaviour/Constant")]
+[CreateAssetMenu(fileName = "Constant Wave", menuName = "Waves/Behaviour/Constant")]
 public class ConstantNumberData : BehaviourData {
     private TypeWave type = TypeWave.ConstantNumber;
+
+    public int constantNumberWaves;
 
     public override TypeWave GetTypeBehaviour() {
         return type;

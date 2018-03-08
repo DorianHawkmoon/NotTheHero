@@ -4,12 +4,16 @@ public class FactorySpawnDistribution {
         SpawnDistribution spawn = null;
         switch (typeSpawn) {
             case TypeSpawnDistribution.MaxPerSpawn:
-                spawn = new MaxPerSpawnDistribution(data);
+                spawn = new MaxPerSpawnDistribution();
                 break;
             case TypeSpawnDistribution.Percentage:
-                spawn = new PercentageSpawnDistribution(data);
+                spawn = new PercentageSpawnDistribution();
+                break;
+            case TypeSpawnDistribution.Random:
+                spawn = new RandomSpawnDistribution();
                 break;
         }
+        spawn.SetData(data);
         return spawn;
     }    
 }

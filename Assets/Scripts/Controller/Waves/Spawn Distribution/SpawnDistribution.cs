@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-public class SpawnDistribution {
+public abstract class SpawnDistribution {
     public SpawnPoints spawnPoints;
-    
-    public virtual void SpawnHero(GameObject prefab) { }
+
+    public abstract void SetData(SpawnData data);
+    public abstract void SpawnHero(GameObject prefab);
 }

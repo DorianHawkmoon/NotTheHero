@@ -36,7 +36,10 @@ public class HeroBehaviour : MonoBehaviour {
     /// Target is going through
     /// </summary>
     private GameObject targetSelected; //TODO improve this by getting a targetable component which specify the exact point
-    //to shoot and look for
+                                       //to shoot and look for
+
+    //the hero has died
+    private bool died;
 
     /// <summary>
     /// Needed components
@@ -44,14 +47,21 @@ public class HeroBehaviour : MonoBehaviour {
     private TargetComponent targetComponent;
     private MovementComponent moveComponent;
     private AttackComponent launcherComponent;
+    private LifeComponent lifeComponent;
 
     // Use this for initialization
     public void Start() {
         targetComponent = GetComponent<TargetComponent>();
         moveComponent = GetComponent<MovementComponent>();
         launcherComponent = GetComponent<AttackComponent>();
+        lifeComponent = GetComponent<LifeComponent>();
+
         Debug.Assert(targetComponent != null);
         Debug.Assert(moveComponent != null);
+
+        if (lifeComponent != null) {
+            lifeComponent.RegisterOnDeath(OnHeroDeath);
+        }
 
         if (!SearchTower()) {
             SearchPlayerTower();
@@ -68,6 +78,8 @@ public class HeroBehaviour : MonoBehaviour {
     /// else it set the movement and look for another target
     /// </summary>
     public void Update() {
+        if (died) return;
+
         if (!CadenceShoot() && !inCadence) {
             CheckTarget();
             CheckDistanceShoot();
@@ -101,9 +113,9 @@ public class HeroBehaviour : MonoBehaviour {
             timerCadence -= Time.deltaTime;
 
             if (timerCadence < 0) {
-#if DEBUG_HeroBehaviour
+                #if DEBUG_HeroBehaviour
                 Debug.Log("Timer cadence over.");
-#endif
+                #endif
                 //check the same target again to see if still close
                 if (CheckDistanceShoot()) {
                     //it has shoot, start cadence again
@@ -253,6 +265,15 @@ public class HeroBehaviour : MonoBehaviour {
         }
 
         return target;
+    }
+
+    private void OnHeroDeath() {
+        lifeComponent.UnregisterOnDeath(OnHeroDeath);
+        died = true;
+
+        //TODO do death animation (in other component I guess)
+        //destroy enemy
+        Destroy(this.gameObject, 5);
     }
 
     /// <summary>

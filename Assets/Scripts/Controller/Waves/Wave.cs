@@ -42,7 +42,8 @@ public class Wave : ScriptableObject {
     /// </summary>
     /// <returns></returns>
     public bool WaveOver() {
-        return false;
+        //TODO need a way to check if the behaviour has finished, but not the list of events
+        return waveBehaviour.IsFinished();
     }
 
     /// <summary>

@@ -802,7 +802,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 11400000, guid: 5ed853570f9adf54ea70a5292a176a9e, type: 2}
-  timeBetweenWages: 20
+  - {fileID: 11400000, guid: 8c8222bfe3dab6b4e87d7995dbb1f744, type: 2}
+  - {fileID: 11400000, guid: f9d476e52c5e44a43bb130fdd4bbe72e, type: 2}
+  timeBetweenWages: 10
   timeCountdownStart: 3
 --- !u!1 &811752079
 GameObject:
@@ -980,7 +982,11 @@ Prefab:
     - target: {fileID: 114448463207376456, guid: d8cef802fc472e644928402b75b13977,
         type: 2}
       propertyPath: life
-      value: 2000
+      value: 2000000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1426376989988720, guid: d8cef802fc472e644928402b75b13977, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8cef802fc472e644928402b75b13977, type: 2}

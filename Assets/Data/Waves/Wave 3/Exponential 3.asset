@@ -1,0 +1,185 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e053a078aec2f424db78c0859cb0aeb2, type: 3}
+  m_Name: Exponential 3
+  m_EditorClassIdentifier: 
+  heroes:
+  - {fileID: 1325365475813950, guid: de1453df849f8fd46abf8dabce3bf59d, type: 2}
+  numberEnemies: 30
+  steps: 5
+  beginValueTime: 5
+  endValueTime: 60
+  timeFunction: 26
+  curveTime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 1.50548
+      outSlope: 1.50548
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.16000015
+      value: 0.24087703
+      inSlope: 1.399913
+      outSlope: 1.399913
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.22200027
+      value: 0.32112664
+      inSlope: 1.2000202
+      outSlope: 1.2000202
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.27999994
+      value: 0.38525656
+      inSlope: 0.99261284
+      outSlope: 0.99261284
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.34099916
+      value: 0.43890727
+      inSlope: 0.7501102
+      outSlope: 0.7501102
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.3999984
+      value: 0.47552747
+      inSlope: 0.48747298
+      outSlope: 0.48747298
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.4549977
+      value: 0.49501133
+      inSlope: 0.22591223
+      outSlope: 0.22591223
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.5319967
+      value: 0.50252396
+      inSlope: 0.18127117
+      outSlope: 0.18127117
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.57599616
+      value: 0.5141827
+      inSlope: 0.3807511
+      outSlope: 0.3807511
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.6289955
+      value: 0.5404983
+      inSlope: 0.61750007
+      outSlope: 0.61750007
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.6829948
+      value: 0.5803753
+      inSlope: 0.8613304
+      outSlope: 0.8613304
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.74899393
+      value: 0.6453309
+      inSlope: 1.1022556
+      outSlope: 1.1022556
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.81899303
+      value: 0.7307524
+      inSlope: 1.3539107
+      outSlope: 1.3539107
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 1.4874985
+      outSlope: 1.4874985
+      tangentMode: 11
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  initialNumber: 1
+  finalNumber: 10
+  numberFunction: 1
+  curveNumber:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0.06199995
+      outSlope: 0.06199995
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.06199995
+      value: 0.0038439939
+      inSlope: 0.12449998
+      outSlope: 0.12449998
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.12500007
+      value: 0.015625019
+      inSlope: 0.25000012
+      outSlope: 0.25000012
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.1880002
+      value: 0.035344075
+      inSlope: 0.37550038
+      outSlope: 0.37550038
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.25000033
+      value: 0.062500164
+      inSlope: 0.5314998
+      outSlope: 0.5314998
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.37499872
+      value: 0.14062405
+      inSlope: 0.74999744
+      outSlope: 0.74999744
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.4999971
+      value: 0.24999711
+      inSlope: 0.9999943
+      outSlope: 0.9999943
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.6249955
+      value: 0.39061943
+      inSlope: 1.2499909
+      outSlope: 1.2499909
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.7499939
+      value: 0.5624909
+      inSlope: 1.4999876
+      outSlope: 1.4999876
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 0.8749923
+      value: 0.7656115
+      inSlope: 1.7499893
+      outSlope: 1.7499893
+      tangentMode: 11
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 1.8749925
+      outSlope: 1.8749925
+      tangentMode: 11
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

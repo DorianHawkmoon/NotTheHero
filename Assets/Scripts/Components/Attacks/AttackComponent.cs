@@ -9,6 +9,8 @@ public abstract class AttackComponent : MonoBehaviour {
 
     private Animator animator;
 
+    private bool walkingExists = false;
+
     /// <summary>
     /// The number combining all layers to check in collision
     /// </summary>
@@ -17,6 +19,9 @@ public abstract class AttackComponent : MonoBehaviour {
     public virtual void Start() {
         layerCollision = Utils.ToLayer(layerColliders);
         animator = GetComponent<Animator>();
+        if (animator != null) {
+            walkingExists = Utils.AnimatorContainsParam(animator, "Walking");
+        }
     }
 
     /// <summary>
@@ -24,7 +29,7 @@ public abstract class AttackComponent : MonoBehaviour {
     /// </summary>
     public void AttackAnimation() {
         if (animator != null) {
-            animator.SetBool("Walking", false);
+            if(walkingExists) animator.SetBool("Walking", false);
             animator.ResetTrigger("Attack");
             animator.SetTrigger("Attack");
         }

@@ -64,6 +64,7 @@ public class KillDistance : MonoBehaviour {
     private TargetComponent targetComponent;
     private AttackComponent attackComponent;
     private LookingComponent lookingComponent;
+    //TODO make a component who stop everything when its death
 
     /// <summary>
     /// Get components needed

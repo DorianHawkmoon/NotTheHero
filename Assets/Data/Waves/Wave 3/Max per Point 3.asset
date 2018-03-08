@@ -8,11 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e544f25e9c3f1ed4dbe1458ab7379580, type: 3}
-  m_Name: Random 1
+  m_Script: {fileID: 11500000, guid: de4e6f9b6ff51dd4b8e56dceadc9ce1e, type: 3}
+  m_Name: Max per Point 3
   m_EditorClassIdentifier: 
-  heroes:
-  - {fileID: 1325365475813950, guid: de1453df849f8fd46abf8dabce3bf59d, type: 2}
-  maxRandomSpawn: 10
-  minRandomSpawn: 3
-  numberEnemies: 10
+  points: {fileID: 11400000, guid: f1260cbe4566fa24f91a776844bdbfc0, type: 2}
+  maximumsPerSpawn: 0100000001000000010000000100000006000000

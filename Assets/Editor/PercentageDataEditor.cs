@@ -1,6 +1,4 @@
 ﻿using UnityEditor;
-using System;
-using UnityEngine;
 
 [CustomEditor(typeof(PercentageData))]
 [CanEditMultipleObjects]

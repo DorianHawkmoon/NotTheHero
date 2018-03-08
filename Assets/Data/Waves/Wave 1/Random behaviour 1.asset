@@ -8,14 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fee272e5385ac3f49b61854ffd1fd9a6, type: 3}
-  m_Name: Spawn 1
+  m_Script: {fileID: 11500000, guid: e544f25e9c3f1ed4dbe1458ab7379580, type: 3}
+  m_Name: Random behaviour 1
   m_EditorClassIdentifier: 
-  points: {fileID: 11400000, guid: f1260cbe4566fa24f91a776844bdbfc0, type: 2}
-  percentageOfUse:
-  - 15
-  - 10
-  - 10
-  - 20
-  - 45
-  totalPercentage: 100
+  heroes:
+  - {fileID: 1325365475813950, guid: de1453df849f8fd46abf8dabce3bf59d, type: 2}
+  numberEnemies: 5
+  maxRandomSpawn: 10
+  minRandomSpawn: 3

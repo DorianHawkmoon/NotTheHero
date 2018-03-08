@@ -85,7 +85,6 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         GameObject dummie = new GameObject("dragged object");
         //set scale
         dummie.transform.localScale = item.ScaleItem;
-        dummie.layer = LayerMask.NameToLayer("Menu Items");
         //add the sprite to be shown
         rendererDragged = dummie.AddComponent<SpriteRenderer>();
         rendererDragged.sprite = item.SpriteItem;
@@ -120,7 +119,6 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         position.z = -1;
         itemBeingDragged.transform.position = position;
-
         //TODO check collisions and tint it in red
         position.z = 0;
         if (AllowedPlacement(position)) {

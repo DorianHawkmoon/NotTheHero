@@ -6,7 +6,6 @@ public class RandomData : BehaviourData {
 
     public int maxRandomSpawn = 10;
     public int minRandomSpawn = 3;
-    public int numberEnemies;
 
     public override TypeWave GetTypeBehaviour() {
         return type;
